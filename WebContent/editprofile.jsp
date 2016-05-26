@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -54,9 +55,10 @@
 			<div class="col-sm-8">
 
 				<form method="post" action="control">
-					<center>
+					
 					<h3>Edit Profile</h3>
 						<input type='hidden' name='action' value='EditProfile'>
+						<c:forEach items="${requestScope.userProfile}" var="d">
 						<table border="0" class="table">
 							<thead>
 							</thead>
@@ -65,45 +67,45 @@
 								<tr>
 									<td>Date of Birth</td>
 									<td class="field"><input class="form-control" type="text"
-										id="dob" name="dob" value="" /></td>
+										id="dob" name="dob" value="${d.dob}" /></td>
 								</tr>
 
 								<tr>
 									<td>Current Position</td>
 									<td class="field"><input class="form-control" type="text"
-										id="currentPosition" name="currentPosition" value="" /></td>
+										id="currentPosition" name="currentPosition" value="${d.currentPosition}" /></td>
 								</tr>
 
 								<tr>
 									<td>Current Company</td>
 									<td class="field"><input class="form-control" type="text"
-										id="currentCompany" name="currentCompany" value="" /></td>
+										id="currentCompany" name="currentCompany" value="${d.currentCompany}" /></td>
 								</tr>
 
 								<tr>
 									<td>Highest Education</td>
 									<td class="field"><input class="form-control" type="text"
-										id="highestEducation" name="highestEducation" value="" /></td>
+										id="highestEducation" name="highestEducation" value="${d.highestEducation}" /></td>
 								</tr>
 								<tr>
 									<td>Past Experience</td>
 									<td class="field"><input class="form-control" type="text"
-										id="pastExperience" name="pastExperience" value="" /></td>
+										id="pastExperience" name="pastExperience" value="${d.pastExperience}" /></td>
 								</tr>
 								<tr>
 									<td>Professional Skill</td>
 									<td class="field"><input class="form-control" type="text"
-										id="professionalSkills" name="professionalSkills" value="" /></td>
+										id="professionalSkills" name="professionalSkills" value="${d.professionalSkills}" /></td>
 								</tr>
 								<tr>
 									<td>Cover Letter</td>
 									<td class="field"><input class="form-control" type="text"
-										id="cLetter" name="cLetter" value="" /></td>
+										id="cLetter" name="cLetter" value="${d.cLetter}" /></td>
 								</tr>
 																<tr>
 									<td>Resume</td>
 									<td class="field"><input class="form-control" type="text"
-										id="resume" name="resume" value="" /></td>
+										id="resume" name="resume" value="${d.resume}" /></td>
 								</tr>
 								
 								<tr>
@@ -113,7 +115,8 @@
 								</tr>
 							</tbody>
 						</table>
-					</center>
+						</c:forEach>
+					
 				</form>
 			</div>
 			<div class="col-sm-2"></div>
