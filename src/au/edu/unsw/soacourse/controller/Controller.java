@@ -39,6 +39,7 @@ public class Controller extends HttpServlet {
 		commands.put(Actions.Login, new LoginCommand());
 		commands.put(Actions.ToEditProfile, new ToEditProfileCommand());
 		commands.put(Actions.EditProfile, new EditProfileCommand());
+		commands.put(Actions.RegProfile, new RegProfileCommand());
 		commands.put(Actions.SearchJob, new SearchJobCommand());
 
 	}

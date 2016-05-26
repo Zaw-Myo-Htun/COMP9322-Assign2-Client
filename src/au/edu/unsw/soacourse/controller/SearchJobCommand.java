@@ -53,7 +53,7 @@ public class SearchJobCommand implements Command {
 				.header("SecurityKey", "i-am-foundit")
 				.header("ShortKey", "app-candidate")
 				.type("application/json").post(ClientResponse.class, reg);
-		if (response.getStatus() != 201) {
+		if (r.getStatus() != 201) {
 			System.out.println(r.getStatus() + " ERROR");
 		}else{
 			request.setAttribute("verify", "false");
