@@ -27,6 +27,7 @@ public class UserDao {
 		try {
 			PreparedStatement preparedStatement = connection
 					.prepareStatement("select * from LOCALJOBSEEKER where EMAIL=?");
+			preparedStatement.setString(1, username);
 			ResultSet rs = preparedStatement.executeQuery();
 			if (rs.next()) {
 				user.setUserID(rs.getString("USERID"));

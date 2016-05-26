@@ -22,7 +22,8 @@ public class RegProfileCommand implements Command {
 			throws ServletException, IOException {
 
 		RegistrationRequestDTO userProfile = new RegistrationRequestDTO(); 
-		userProfile.setUserID(request.getSession().getAttribute("userID").toString()); 
+		userProfile.setUserID(request.getParameter("userID")); 
+		System.out.println(request.getParameter("userID"));
 		userProfile.setDob(request.getParameter("dob")); 
 		userProfile.setCurrentPosition(request.getParameter("currentPosition"));
 		userProfile.setCurrentCompany(request.getParameter("currentCompany")); 
@@ -37,12 +38,12 @@ public class RegProfileCommand implements Command {
 				JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
 		Client client = Client.create(clientConfig);
 		WebResource webResource = client
-				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/register");
+				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/registration/register");
 		ClientResponse r = webResource.accept("application/json")
 				.header("SecurityKey", "i-am-foundit")
 				.header("ShortKey", "app-candidate")
 				.type("application/json").post(ClientResponse.class, userProfile);
-		if (response.getStatus() != 201) {
+		if (r.getStatus() != 201) {
 			System.out.println(r.getStatus() + " ERROR");
 		}else{
 			request.setAttribute("verify", "false");
