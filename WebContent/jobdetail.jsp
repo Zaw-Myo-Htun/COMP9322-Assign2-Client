@@ -52,47 +52,32 @@
 		<div class="row">
 			<div class="col-sm-2"></div>
 			<div class="col-sm-8">
-
-				<form method="post" action="control">
-					<input type='hidden' name='action' value='Login'>
-
-					<h3>
-						Welcome
-						<%=session.getAttribute("cName")%>!
-					</h3>
-					<table border="0" class="table">
-						<tbody>
-
-							<tr>
-								<td>Keyword</td>
-								<td class="field"><input class="form-control" type="text"
-									id="keyword" name="keyword" value="" /></td>
-							</tr>
-
-							<tr>
-								<td>Skill</td>
-								<td class="field"><input class="form-control" type="text"
-									id="skill" name="skill" value="" /></td>
-							</tr>
-
-							<tr>
-								<td>Status</td>
-								<td class="field"><input class="form-control" type="text"
-									id='status' name="status" value="" /></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td class="field"><input type="submit"
-									class="btn btn-primary" value="Search" style="width: 100px" /></td>
-							</tr>
-
-						</tbody>
-					</table>
-				</form>
-
+				<center>
+					<h3>Vacancy Details</h3>
+				</center>
+				<br>
+				<!-- TODO 
+				1. Get Details from servlet
+				2. Apply core library 
+				3. Recieve it here
+				4. Use choose, otherwise to print it here
+				 -->
+				<table>
+					<tr>
+						<td></td>
+										<td><input class="btn btn-primary" type="submit"
+										value="Back" style="width:100px"/> <input class="btn btn-primary" type="submit"
+										value="Apply" style="width:100px"/></td>
+							
+					</tr>
+				</table>
 			</div>
 			<div class="col-sm-2"></div>
+
 		</div>
 	</div>
 </body>
 </html>
+				<!-- TODO 
+				1. 
+				 -->

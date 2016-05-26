@@ -10,6 +10,7 @@
 	<form method="post" action="control">
 		<center>
 			<input type='hidden' name='action' value='RegProfile'>
+			<input type='hidden' name='userID' value=<%=request.getAttribute("userID") %>>
 			<table border="0" cellpadding="5">
 				<thead>
 					<tr>
@@ -51,6 +52,12 @@
 						<td class="field"><input class="form-control" type="text"
 							id="professionalSkills" name="professionalSkills" value="" /></td>
 					</tr>
+					<tr>
+						<td>Cover Letter</td>
+						<td class="field"><input class="form-control" type="text"
+							id="cLetter" name="cLetter" value="" /></td>
+					</tr>
+
 					<tr>
 						<td><label>Resume</label></td>
 						<td class="field"><input class="form-control" type="text"

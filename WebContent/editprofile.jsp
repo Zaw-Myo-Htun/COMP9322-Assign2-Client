@@ -16,7 +16,7 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-<title>Home</title>
+<title>FoundIT</title>
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top">
@@ -31,7 +31,7 @@
 					<li><a href="homepage.jsp">Home</a></li>
 					<li><a href="login.jsp">Login</a></li>
 					<li><a href="editprofile.jsp">Edit Profile</a></li>
-					<li><a href="#">Job Search</a></li>
+					<li><a href="joblist.jsp">Job Search</a></li>
 					<li><a href="#">Job Basket</a></li>
 					<li><a href="#">Logout</a></li>
 					<li><a href="#">Account</a></li>
