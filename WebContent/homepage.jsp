@@ -54,7 +54,7 @@
 			<div class="col-sm-8">
 
 				<form method="post" action="control">
-					<input type='hidden' name='action' value='Login'>
+					<input type='hidden' name='action' value='SearchJob'>
 
 					<h3>
 						Welcome
