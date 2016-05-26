@@ -18,7 +18,9 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 
+import au.edu.unsw.soacourse.model.JobSearchReponseDTO;
 import au.edu.unsw.soacourse.model.SignUpRegRequest;
+import au.edu.unsw.soacourse.model.UserProfileResponseDTO;
 import au.edu.unsw.soacourse.dao.UserDao;
 import au.edu.unsw.soacourse.model.User;
 
@@ -28,37 +30,27 @@ public class SearchJobCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String userID = UUID.randomUUID().toString(); 
-		User user = new User(); 
-		user.setEmail (request.getParameter("email")); 
-		user.setPassword((request.getParameter ("pwd")));
-		user.setName(request.getParameter("name")); 
-		user.setUserID(userID);
-		user.setVerified ("Yes");
-		dao.addUser(user);
-
-		SignUpRegRequest reg = new SignUpRegRequest(); 
-		reg.setEmail (request.getParameter("email")); 
-		reg.setPassword (request.getParameter("pwd"));
-		reg.setUserID(userID); 
-		reg.setName(request.getParameter("name"));
-		
 		ClientConfig clientConfig = new DefaultClientConfig();
 		clientConfig.getFeatures().put(
 				JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
 		Client client = Client.create(clientConfig);
 		WebResource webResource = client
-				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/signup");
-		ClientResponse r = webResource.accept("application/json")
+				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/jobsearch/"
+						+ request.getParameter("keyword") + "/"
+						+ request.getParameter("status") + "/"
+						+ request.getParameter("skill"));
+		
+		JobSearchReponseDTO r = webResource.accept("application/json")
 				.header("SecurityKey", "i-am-foundit")
 				.header("ShortKey", "app-candidate")
-				.type("application/json").post(ClientResponse.class, reg);
-		if (r.getStatus() != 201) {
+				.type("application/json").get(JobSearchReponseDTO.class);
+		if (r.getStatus() != 200) {
 			System.out.println(r.getStatus() + " ERROR");
 		}else{
-			request.setAttribute("verify", "false");
-			RequestDispatcher rd = request.getRequestDispatcher("/regprofile.jsp"); 
-			rd.forward (request, response); 
+			System.out.println(r.getJobResults().get(0).get(1));
+			//request.setAttribute("userProfile", r.getJobSeeker());
+			RequestDispatcher rd = request.getRequestDispatcher("/joblist.jsp");
+			rd.forward(request, response);
 		}
 	}
 }

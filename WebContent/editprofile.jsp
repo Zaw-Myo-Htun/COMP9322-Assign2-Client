@@ -58,7 +58,7 @@
 					
 					<h3>Edit Profile</h3>
 						<input type='hidden' name='action' value='EditProfile'>
-						<c:forEach items="${requestScope.userProfile}" var="d">
+						
 						<table border="0" class="table">
 							<thead>
 							</thead>
@@ -67,45 +67,45 @@
 								<tr>
 									<td>Date of Birth</td>
 									<td class="field"><input class="form-control" type="text"
-										id="dob" name="dob" value="${d.dob}" /></td>
+										id="dob" name="dob" value="<c:out value="${userProfile[0]}"/>" /></td>
 								</tr>
 
 								<tr>
 									<td>Current Position</td>
 									<td class="field"><input class="form-control" type="text"
-										id="currentPosition" name="currentPosition" value="${d.currentPosition}" /></td>
+										id="currentPosition" name="currentPosition" value="<c:out value="${userProfile[3]}"/>" /></td>
 								</tr>
 
 								<tr>
 									<td>Current Company</td>
 									<td class="field"><input class="form-control" type="text"
-										id="currentCompany" name="currentCompany" value="${d.currentCompany}" /></td>
+										id="currentCompany" name="currentCompany" value="<c:out value="${userProfile[2]}"/>" /></td>
 								</tr>
 
 								<tr>
 									<td>Highest Education</td>
 									<td class="field"><input class="form-control" type="text"
-										id="highestEducation" name="highestEducation" value="${d.highestEducation}" /></td>
+										id="highestEducation" name="highestEducation" value="<c:out value="${userProfile[3]}"/>" /></td>
 								</tr>
 								<tr>
 									<td>Past Experience</td>
 									<td class="field"><input class="form-control" type="text"
-										id="pastExperience" name="pastExperience" value="${d.pastExperience}" /></td>
+										id="pastExperience" name="pastExperience" value="<c:out value="${userProfile[4]}"/>" /></td>
 								</tr>
 								<tr>
 									<td>Professional Skill</td>
 									<td class="field"><input class="form-control" type="text"
-										id="professionalSkills" name="professionalSkills" value="${d.professionalSkills}" /></td>
+										id="professionalSkills" name="professionalSkills" value="<c:out value="${userProfile[5]}"/>" /></td>
 								</tr>
 								<tr>
 									<td>Cover Letter</td>
 									<td class="field"><input class="form-control" type="text"
-										id="cLetter" name="cLetter" value="${d.cLetter}" /></td>
+										id="cLetter" name="cLetter" value="<c:out value="${userProfile[1]}"/>" /></td>
 								</tr>
 																<tr>
 									<td>Resume</td>
 									<td class="field"><input class="form-control" type="text"
-										id="resume" name="resume" value="${d.resume}" /></td>
+										id="resume" name="resume" value="<c:out value="${userProfile[1]}"/>" /></td>
 								</tr>
 								
 								<tr>
@@ -115,7 +115,6 @@
 								</tr>
 							</tbody>
 						</table>
-						</c:forEach>
 					
 				</form>
 			</div>

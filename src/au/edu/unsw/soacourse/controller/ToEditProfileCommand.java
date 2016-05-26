@@ -35,7 +35,8 @@ public class ToEditProfileCommand implements Command {
 				.type("application/json").get(UserProfileResponseDTO.class);
 		if (r.getStatus() != 200) {
 			System.out.println(r.getStatus() + " ERROR");
-		}else{
+		}else{System.out.println("aaadfsfaffs");
+			System.out.println(r.getJobSeeker().get(3));
 			request.setAttribute("userProfile", r.getJobSeeker());
 			RequestDispatcher rd = request.getRequestDispatcher("/editprofile.jsp");
 			rd.forward(request, response);
