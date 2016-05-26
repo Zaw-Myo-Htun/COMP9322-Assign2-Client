@@ -30,7 +30,6 @@ public class RegisterCommand implements Command {
 		
 		
 		if(!dao.isEmailExist(email)) { 
-			System.out.println("asdasdasda");
 			EmailRequestDTO emailDTO = new EmailRequestDTO(); 
 			String emailLink = "Press the link to activate: http://localhost:8080/COMP9322—assn2–client/control?action=Activation&email="
 					+ email + "&name=" + name+ "&pwd=" + pwd; 
@@ -44,8 +43,8 @@ public class RegisterCommand implements Command {
 			WebResource webResource = client
 					.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/email");
 			ClientResponse r = webResource.accept("application/json")
-					.header("Authorization", "i-am-foundit")
-					.header("Authorization", "app-candidate")
+					.header("SecurityKey", "i-am-foundit")
+					.header("ShortKey", "app-candidate")
 					.type("application/json").post(ClientResponse.class, emailDTO);
 			if (response.getStatus() != 201) {
 				request.setAttribute("isUserExist", "error");
@@ -54,7 +53,7 @@ public class RegisterCommand implements Command {
 			}else{
 				request.setAttribute("isUserExist", "verify");
 				RequestDispatcher rd = request.getRequestDispatcher("/login.jsp"); 
-				rd.forward (request, response); 
+				rd.forward (request, response);
 			}
 		}else{
 			request.setAttribute("isUserExist", "true");

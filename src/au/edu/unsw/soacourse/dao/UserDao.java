@@ -44,7 +44,7 @@ public class UserDao {
 		try {
 			PreparedStatement preparedStatement = connection
 					.prepareStatement("select * from LOCALJOBSEEKER where EMAIL='"
-							+ username + " and PASSWORD='" + password + "'");
+							+ username + "' and PASSWORD='" + password + "'");
 			ResultSet rs = preparedStatement.executeQuery();
 			return rs.next();
 		} catch (SQLException e) {

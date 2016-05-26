@@ -50,12 +50,14 @@ public class ActivationCommand implements Command {
 		WebResource webResource = client
 				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/signup");
 		ClientResponse r = webResource.accept("application/json")
+				.header("SecurityKey", "i-am-foundit")
+				.header("ShortKey", "app-candidate")
 				.type("application/json").post(ClientResponse.class, reg);
 		if (response.getStatus() != 201) {
 			System.out.println(r.getStatus() + " ERROR");
 		}else{
 			request.setAttribute("verify", "false");
-			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp"); 
+			RequestDispatcher rd = request.getRequestDispatcher("/regprofile.jsp"); 
 			rd.forward (request, response); 
 		}
 	}

@@ -16,7 +16,7 @@ import com.sun.jersey.api.json.JSONConfiguration;
 
 import au.edu.unsw.soacourse.model.RegistrationRequestDTO;
 
-public class EditProfileCommand implements Command {
+public class RegProfileCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -37,7 +37,7 @@ public class EditProfileCommand implements Command {
 				JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
 		Client client = Client.create(clientConfig);
 		WebResource webResource = client
-				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/update");
+				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/register");
 		ClientResponse r = webResource.accept("application/json")
 				.header("SecurityKey", "i-am-foundit")
 				.header("ShortKey", "app-candidate")
@@ -46,7 +46,7 @@ public class EditProfileCommand implements Command {
 			System.out.println(r.getStatus() + " ERROR");
 		}else{
 			request.setAttribute("verify", "false");
-			RequestDispatcher rd = request.getRequestDispatcher("/homepage.jsp"); 
+			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp"); 
 			rd.forward (request, response); 
 		}
 	}
