@@ -12,17 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 
 import au.edu.unsw.soacourse.model.JobSearchReponseDTO;
-import au.edu.unsw.soacourse.model.SignUpRegRequest;
-import au.edu.unsw.soacourse.model.UserProfileResponseDTO;
 import au.edu.unsw.soacourse.dao.UserDao;
-import au.edu.unsw.soacourse.model.User;
 
 public class SearchJobCommand implements Command {
 	UserDao dao = new UserDao();
@@ -34,11 +30,27 @@ public class SearchJobCommand implements Command {
 		clientConfig.getFeatures().put(
 				JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
 		Client client = Client.create(clientConfig);
+		String keyword = "",status = "",skill ="";
+		if(request.getParameter("keyword").equals("")){
+			keyword = "default";
+		}else{
+			keyword =request.getParameter("keyword");
+		}
+		if(request.getParameter("status").equals("")){
+			status = "default";
+		}else{
+			status = request.getParameter("status");
+		}
+		if(request.getParameter("skill").equals("")){
+			skill = "default";
+		}else{
+			skill = request.getParameter("skill");
+		}
 		WebResource webResource = client
 				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/jobsearch/"
-						+ request.getParameter("keyword") + "/"
-						+ request.getParameter("status") + "/"
-						+ request.getParameter("skill"));
+						+ keyword + "/"
+						+ status + "/"
+						+ skill);
 		
 		JobSearchReponseDTO r = webResource.accept("application/json")
 				.header("SecurityKey", "i-am-foundit")
@@ -47,8 +59,8 @@ public class SearchJobCommand implements Command {
 		if (r.getStatus() != 200) {
 			System.out.println(r.getStatus() + " ERROR");
 		}else{
-			System.out.println(r.getJobResults().get(0).get(1));
-			//request.setAttribute("userProfile", r.getJobSeeker());
+			System.out.println(r.getJobResults());
+			request.setAttribute("jobList", r.getJobResults());
 			RequestDispatcher rd = request.getRequestDispatcher("/joblist.jsp");
 			rd.forward(request, response);
 		}
