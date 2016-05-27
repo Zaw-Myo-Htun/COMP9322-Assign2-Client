@@ -31,7 +31,7 @@
 					<li></li>
 					<li><a href="homepage.jsp">Home</a></li>
 					<li><a href="login.jsp">Login</a></li>
-					<li><a href="editprofile.jsp">Edit Profile</a></li>
+					<li><a href="control?action=ToEditProfile">Edit Profile</a></li>
 					<li><a href="joblist.jsp">Job Search</a></li>
 					<li><a href="#">Job Basket</a></li>
 					<li><a href="#">Logout</a></li>
