@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -66,15 +67,20 @@
 						</thead>
 						<tbody>
 							<!--
-											TODO -- only thing remaining here is correcting job list, job title and job description as used 
+							TODO -- only thing remaining here is correcting job list, job title and job description as used 
 											in servlet request
-						  <c:forEach items="${requestScope.jobList}" var="d">	
-							<tr>
-								<td><c:out value="${d.jobtitle}" /></td>
-								<td><c:out value="${d.jobdescription}" /></td>
-							</tr>
+						  -->
+							<c:forEach items="${requestScope.jobList}" var="d">
+								<form>
+									<tr>
+										<td><c:out value="${d.jobtitle}" /></td>
+										<td><c:out value="${d.jobdescription}" /></td>
+										<td><input class="btn btn-primary" type="submit"
+											value="Add to Basket" style="width: 100px" /></td>
+									</tr>
+								</form>
 							</c:forEach>
-						-->
+
 						</tbody>
 					</table>
 				</form>
