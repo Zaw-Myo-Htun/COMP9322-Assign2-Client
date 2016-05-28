@@ -27,8 +27,8 @@ public class DeleteSavedJobCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-			//String jobID = request.getParameter("jobID");
-			String jobID = "1";
+			String jobID = request.getParameter("jobID");
+			//String jobID = "1";
 			String userID = request.getSession().getAttribute("userID").toString();
 			
 			SavedJobRequestDTO savejob = new SavedJobRequestDTO();

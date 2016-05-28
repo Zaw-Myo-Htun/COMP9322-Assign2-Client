@@ -17,8 +17,8 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-	function Warn() {
-		alert("This is a warning message!");
+	function Warn(aa) {
+		alert(aa);
 		//document.write("This is a warning message!");
 	}
 </script>
