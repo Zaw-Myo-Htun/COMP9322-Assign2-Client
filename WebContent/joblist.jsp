@@ -30,8 +30,8 @@
 						<td><c:out value="${d[6]}" /></td>
 						<td><input type="hidden" name="jobID" value="${d[0]}" />
 						<input type="hidden" name="jobName" value="${d[1]}" /> <input
-							class="btn btn-primary" type="submit" value="Add to Basket"
-							style="width: 150px" /></td>
+							class="btn btn-primary btn-md" type="submit" value="Add to Basket"
+							style="width: 150px;" /></td>
 						</form>
 					</tr>
 				</c:forEach>
