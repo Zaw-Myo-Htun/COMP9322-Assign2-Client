@@ -6,7 +6,7 @@
 <c:choose>
 	<c:when test="${requestScope.jobList.isEmpty()}">
 		<!-- use system.out.println to determine the size of empty request -->
-		<p>Sorry, No Matching dataSets found!</p>
+		<p>Sorry, No Matching dataSets found! <a href="homepage.jsp">Lets search again</a></p>
 	</c:when>
 	<c:otherwise>
 	<%
