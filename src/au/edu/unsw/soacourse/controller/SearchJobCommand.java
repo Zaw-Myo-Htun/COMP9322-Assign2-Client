@@ -63,7 +63,6 @@ public class SearchJobCommand implements Command {
 		}else{
 			HttpSession session = request.getSession();
 			session.setAttribute("jobL", r.getJobResults());
-			System.out.print(r.getJobResults().get(0).get(4));
 			request.setAttribute("jobList", r.getJobResults());
 			RequestDispatcher rd = request.getRequestDispatcher("/joblist.jsp");
 			rd.forward(request, response);
