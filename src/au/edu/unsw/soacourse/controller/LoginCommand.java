@@ -1,7 +1,6 @@
 package au.edu.unsw.soacourse.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,7 +17,7 @@ public class LoginCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		String username = request.getParameter("uname");
 		String pwd = request.getParameter("pass");
 		
@@ -29,10 +28,11 @@ public class LoginCommand implements Command {
 				RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 				rd.forward(request, response);
 			}else{
+				User s = dao.getUser(username);
 				HttpSession session = request.getSession();
-				session.setAttribute("cName", dao.getUser(username).getName());
+				session.setAttribute("cName", s.getName());
 				session.setAttribute("email", username);
-				session.setAttribute("userID", dao.getUser(username).getUserID());
+				session.setAttribute("userID", s.getUserID());
 				RequestDispatcher rd = request.getRequestDispatcher("/homepage.jsp");
 				rd.forward(request, response);
 			}

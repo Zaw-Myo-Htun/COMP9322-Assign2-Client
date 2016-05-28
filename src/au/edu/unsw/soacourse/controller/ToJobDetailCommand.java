@@ -1,6 +1,7 @@
 package au.edu.unsw.soacourse.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,23 +28,38 @@ public class ToJobDetailCommand implements Command {
 		clientConfig.getFeatures().put(
 				JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
 		Client client = Client.create(clientConfig);
-//		WebResource webResource = client
-//				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/job/" + request.getParameter("jobID"));
 		WebResource webResource = client
-				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/job/1");
+				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/job/" + request.getParameter("jobID"));
+//		WebResource webResource = client
+//				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/job/1");
 		
 		JobSearchReponseDTO r = webResource.accept("application/json")
 				.header("SecurityKey", "i-am-foundit")
 				.header("ShortKey", "app-candidate")
 				.type("application/json").get(JobSearchReponseDTO.class);
+		
+		WebResource webResource1 = client
+				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/candidate/" + request.getSession().getAttribute("userID").toString());
+		
+		UserProfileResponseDTO r1 = webResource1.accept("application/json")
+				.header("SecurityKey", "i-am-foundit")
+				.header("ShortKey", "app-candidate")
+				.type("application/json").get(UserProfileResponseDTO.class);
+		
 		if (r.getStatus() != 200) {
 			System.out.println(r.getStatus() + " ERROR");
 		}else{
-			System.out.println(r.getJob());
-			request.setAttribute("jobList", r.getJob());
-			RequestDispatcher rd = request.getRequestDispatcher("/joblist.jsp");
+			ArrayList detail = new ArrayList();
+			if (r1.getStatus() != 200) {
+				System.out.println(r1.getStatus() + " ERROR");
+			}else{
+				detail.addAll(r.getJob());
+				detail.add(r1.getJobSeeker().get(9));
+				detail.add(r1.getJobSeeker().get(10));
+			}
+			request.setAttribute("jobDetail", detail);
+			RequestDispatcher rd = request.getRequestDispatcher("/jobdetail.jsp");
 			rd.forward(request, response);
 		}
 	}
-
 }

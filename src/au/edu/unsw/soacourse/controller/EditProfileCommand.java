@@ -42,7 +42,7 @@ public class EditProfileCommand implements Command {
 				.header("SecurityKey", "i-am-foundit")
 				.header("ShortKey", "app-candidate")
 				.type("application/json").post(ClientResponse.class, userProfile);
-		if (r.getStatus() != 201) {
+		if (r.getStatus() != 204) {
 			System.out.println(r.getStatus() + " ERROR");
 		}else{
 			request.setAttribute("verify", "false");
