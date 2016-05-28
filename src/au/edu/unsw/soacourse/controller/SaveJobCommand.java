@@ -82,8 +82,7 @@ public class SaveJobCommand implements Command {
 			request.setAttribute("returnMessage",
 					"The job has already been saved before!");
 		}
-		RequestDispatcher rd = request.getRequestDispatcher("/joblist.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/control?action=ToJobList");
 		rd.forward(request, response);
 	}
-
 }
