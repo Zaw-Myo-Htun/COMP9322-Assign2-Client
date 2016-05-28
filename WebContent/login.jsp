@@ -2,7 +2,7 @@
 
 				<form method="post" action="control">
 					<center>
-						<h3>Login Here</h3>
+						<h3>Candidate Login Here</h3>
 						<input type='hidden' name='action' value='Login'>
 						<%
 							String isValidUser = request.getAttribute("isValidUser") == null ? "first"

@@ -34,14 +34,20 @@
 
 				<ul class="nav navbar-nav navbar-left">
 					<li></li>
-					<li><a href="homepage.jsp">Home</a></li>
-					<li><a href="control?action=ToEditProfile">Edit Profile</a></li>
-					<li><a href="control?action=ToJobList">Job Search</a></li>
-					<li><a href="control?action=ToSavedJob">Job Basket</a></li>
-					<li><a href="control?action=ToAppliedJob">Applied Jobs</a></li>
-					<li><a href="#">Logout</a></li>
-					<!-- Only for first time & after logout -->
-					<li><a href="login.jsp">Login</a></li>
+					<c:if test="${not empty sessionScope.userID}">
+						<li><a href="homepage.jsp">Home</a></li>
+						<li><a href="control?action=ToEditProfile">Edit Profile</a></li>
+						<li><a href="control?action=ToJobList">Job Search</a></li>
+						<li><a href="control?action=ToSavedJob">Job Basket</a></li>
+						<li><a href="control?action=ToAppliedJob">Applied Jobs</a></li>
+						<li><a href="logout.jsp">Logout</a></li>
+					</c:if>
+					<c:if test="${empty sessionScope.userID}">
+						<!-- Only for first time & after logout -->
+						<li><a href="login.jsp">Candidate Login</a></li>
+						<li><a href="mgrLoginlogin.jsp">Manager Login</a></li>
+						<li><a href="reviewerlogin.jsp">Reviewer Login</a></li>
+					</c:if>
 				</ul>
 			</div>
 		</div>

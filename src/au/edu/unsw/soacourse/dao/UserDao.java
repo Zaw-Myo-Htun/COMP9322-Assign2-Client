@@ -222,4 +222,46 @@ public class UserDao {
 			}
 		}
 	}
+	public boolean isManagerEmailExist(String email) {
+		JDBC_Connection conn = new JDBC_Connection();
+		connection = conn.getConnection();
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = connection
+					.prepareStatement("select * from LOCALMANAGER where EMAIL='"
+							+ email + "'");
+			ResultSet rs = preparedStatement.executeQuery();
+			return rs.next();
+		} catch (SQLException e) {
+			// TOD0 Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try{
+				connection.close();
+			}catch(Exception e){
+				
+			}
+		}
+		return false;
+	}
+	public boolean isManagerExist(String username, String password) {
+		JDBC_Connection conn = new JDBC_Connection();
+		connection = conn.getConnection();
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("select * from LOCALMANAGER where EMAIL='"
+							+ username + "' and PASSWORD='" + password + "'");
+			ResultSet rs = preparedStatement.executeQuery();
+			return rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try{
+				connection.close();
+			}catch(Exception e){
+				
+			}
+		}
+		return false;
+	}
 }
