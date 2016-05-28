@@ -35,14 +35,13 @@
 				<ul class="nav navbar-nav navbar-left">
 					<li></li>
 					<li><a href="homepage.jsp">Home</a></li>
-					<li><a href="login.jsp">Login</a></li>
 					<li><a href="control?action=ToEditProfile">Edit Profile</a></li>
 					<li><a href="control?action=ToJobList">Job Search</a></li>
 					<li><a href="control?action=ToSavedJob">Job Basket</a></li>
-					<li><a href="control?action=ToAppliedJob">Job(Applied)</a></li>
+					<li><a href="control?action=ToAppliedJob">Applied Jobs</a></li>
 					<li><a href="#">Logout</a></li>
-					<li><a href="#">Account</a></li>
-					<li><a href="#">Contact Us</a></li>
+					<!-- Only for first time & after logout -->
+					<li><a href="login.jsp">Login</a></li>
 				</ul>
 			</div>
 		</div>
