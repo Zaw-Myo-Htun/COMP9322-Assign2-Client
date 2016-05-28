@@ -25,7 +25,6 @@
 			<thead>
 				<tr>
 					<th>Job Title</th>
-					<th>Job Description</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -33,14 +32,12 @@
 					<tr>
 						<form action="control" method="post">
 							<input type='hidden' name='action' value='DeleteSavedJob'>
-							<td><a href="control?action=ToJobDetail&jobID=${d[0]}"><c:out value="${d[1]}" /></a></td>
-							<td><c:out value="${d[6]}" /></td>
+							<td><a href="control?action=ToJobDetail&jobID=${d[0]}"><c:out
+										value="${d[1]}" /></a></td>
 							<td><input type="hidden" name="jobID" value="${d[0]}" /> <input
 								type="hidden" name="jobName" value="${d[1]}" /> <input
 								class="btn btn-primary btn-md" type="submit" value="Remove"
 								style="width: 150px;" /></td>
-							<td><input class="btn btn-primary btn-md" type="submit"
-								value="Back" style="width: 150px;" /></td>
 						</form>
 					</tr>
 				</c:forEach>

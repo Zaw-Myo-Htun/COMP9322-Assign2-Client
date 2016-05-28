@@ -9,30 +9,29 @@
 				3. Recieve it here
 				4. Use choose, otherwise to print it here
 				 -->
-				 
+			<form method="post" action="control">
+					
+						<input type='hidden' name='action' value='ApplyJob'>	 
 <table class="table-hover">
+		
 		<tr>
-			<td>Job Title</td>
-			<td>${jobDetail[0]}</td>
-		</tr>
-		<tr>
-			<td>Job Title</td>
+			<td>Job Name</td>
 			<td>${jobDetail[1]}</td>
 		</tr>
 		<tr>
-			<td>Something</td>
+			<td>Company Profile ID</td>
 			<td>${jobDetail[2]}</td>
 		</tr>
 		<tr>
-			<td>Something</td>
+			<td>Salary Rate</td>
 			<td>${jobDetail[3]}</td>
 		</tr>
 		<tr>
-			<td>Something</td>
+			<td>Position Type</td>
 			<td>${jobDetail[4]}</td>
 		</tr>
 		<tr>
-			<td>Something</td>
+			<td>Location</td>
 			<td>${jobDetail[5]}</td>
 		</tr>
 		<tr>
@@ -40,15 +39,15 @@
 			<td>${jobDetail[6]}</td>
 		</tr>
 		<tr>
-			<td>Something</td>
+			<td>Status</td>
 			<td>${jobDetail[7]}</td>
 		</tr>
 		<tr>
-			<td>Something</td>
+			<td>Keyword</td>
 			<td>${jobDetail[8]}</td>
 		</tr>
 		<tr>
-			<td>Something</td>
+			<td>Skill</td>
 			<td>${jobDetail[9]}</td>
 		</tr>
 		<tr>
@@ -59,23 +58,23 @@
 		<tr>
 			<td>Address</td>
 			<td><input class="form-control" type="text"
-										id="DL" name="DL" placeholder="Address"  /></td>
+										id="DL" name="ADR" placeholder="Address"  /></td>
 		</tr>
 		<tr>
 			<td>Resume</td>
 			<td><input class="form-control" type="text"
-										id="DL" name="DL" value="${jobDetail[10]}" /></td>
+										id="DL" name="Resume" value="${jobDetail[10]}" /></td>
 		</tr>
 		<tr>
 			<td>CV</td>
 			<td><input class="form-control" type="text"
-										id="DL" name="DL" value="${jobDetail[11]}" /></td>
+										id="DL" name="CV" value="${jobDetail[11]}" /></td>
 		</tr>
 		<tr>
-			<td><input class="btn btn-primary" type="submit" value="Back"
-				style="width: 100px" /> <input class="btn btn-primary"
+			<td><input class="btn btn-primary"
 				type="submit" value="Apply" style="width: 100px" /></td>
 
 		</tr>
 </table>
+</form>
 <%@ include file="footerEmployee.jsp"%>
