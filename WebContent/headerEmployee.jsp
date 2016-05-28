@@ -33,7 +33,8 @@
 					<li><a href="login.jsp">Login</a></li>
 					<li><a href="control?action=ToEditProfile">Edit Profile</a></li>
 					<li><a href="control?action=ToJobList">Job Search</a></li>
-					<li><a href="jobbasket.jsp">Job Basket</a></li>
+					<li><a href="control?action=ToSavedJob">Job Basket</a></li>
+					<li><a href="control?action=ToAppliedJob">Job(Applied)</a></li>
 					<li><a href="#">Logout</a></li>
 					<li><a href="#">Account</a></li>
 					<li><a href="#">Contact Us</a></li>

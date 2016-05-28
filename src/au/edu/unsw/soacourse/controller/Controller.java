@@ -26,7 +26,7 @@ public class Controller extends HttpServlet {
 
 	private enum Actions {
 		Register, AdminLogin,Activation,Login,ToEditProfile,EditProfile,RegProfile,SearchJob,SaveJob,
-		ToJobDetail,ToSavedJob,DeleteSavedJob,ApplyJob,ToJobList
+		ToJobDetail,ToSavedJob,DeleteSavedJob,ApplyJob,ToJobList,ToAppliedJob
 	};
 
 	public Controller() {
@@ -48,6 +48,7 @@ public class Controller extends HttpServlet {
 		commands.put(Actions.ToSavedJob, new ToSavedJobCommand());
 		commands.put(Actions.DeleteSavedJob, new DeleteSavedJobCommand());
 		commands.put(Actions.ApplyJob, new ApplyJobCommand());
+		commands.put(Actions.ToAppliedJob, new ToAppliedJobCommand());
 	}
 
 	//

@@ -17,13 +17,13 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 
-public class ToSavedJobCommand implements Command {
+public class ToAppliedJobCommand implements Command {
 	UserDao dao = new UserDao();
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			request.setAttribute("allSavedJobs",dao.getAllSavedJobsByUserID(request.getSession().getAttribute("userID").toString()));
-			RequestDispatcher rd = request.getRequestDispatcher("/jobbasket.jsp");
-			rd.forward(request, response);
+		request.setAttribute("allSavedJobs",dao.getAllSavedJobsByUserID(request.getSession().getAttribute("userID").toString()));
+		RequestDispatcher rd = request.getRequestDispatcher("/jobbasket.jsp");
+		rd.forward(request, response);
 	}
 
 }
