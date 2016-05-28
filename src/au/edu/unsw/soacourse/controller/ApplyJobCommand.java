@@ -30,31 +30,6 @@ public class ApplyJobCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// try {
-		// success = dao.addSavedJobs(request.getParameter("jobID"), request
-		// .getSession().getAttribute("userID").toString(),
-		// request.getParameter("jobName"));
-		// } catch (Exception e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		//
-		// SavedJobRequestDTO savejob = new SavedJobRequestDTO();
-		// savejob.setJobID(request.getParameter("jobID"));
-		// savejob.setUserID(request.getSession().getAttribute("userID")
-		// .toString());
-		// savejob.setJobName(request.getParameter("jobName"));
-		//
-		// ClientConfig clientConfig = new DefaultClientConfig();
-		// clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING,
-		// Boolean.TRUE);
-		// Client client = Client.create(clientConfig);
-		// WebResource webResource = client
-		// .resource("http://localhost:8080/HelloWorldCxfRest/foundIT/saveJob");
-		// ClientResponse r = webResource.accept("application/json")
-		// .header("SecurityKey", "i-am-foundit")
-		// .header("ShortKey", "app-candidate").type("application/json")
-		// // .post(ClientResponse.class, savejob);
 		ClientConfig clientConfig = new DefaultClientConfig();
 		clientConfig.getFeatures().put(
 				JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
@@ -73,12 +48,18 @@ public class ApplyJobCommand implements Command {
 			ApplyJobRequestDTO applyJob = new ApplyJobRequestDTO();
 			String jobApplicationID = UUID.randomUUID().toString(); 
 			applyJob.setJobApplicationID(jobApplicationID);
-			applyJob.setJobID( request.getParameter("jobID"));
+			applyJob.setJobID("1");
 			applyJob.setUserID(request.getSession().getAttribute("userID").toString());
-			applyJob.setAdr(request.getParameter("ADR"));
-			applyJob.setDl(request.getParameter("DL"));
-			applyJob.setCv(request.getParameter("CV"));
-			applyJob.setResume(request.getParameter("Resume"));
+			applyJob.setAdr("ADR001");
+			applyJob.setDl("DL001");
+			applyJob.setCv("CV1");
+			applyJob.setResume("Resume1");
+//			applyJob.setJobID( request.getParameter("jobID"));
+//			applyJob.setUserID(request.getSession().getAttribute("userID").toString());
+//			applyJob.setAdr(request.getParameter("ADR"));
+//			applyJob.setDl(request.getParameter("DL"));
+//			applyJob.setCv(request.getParameter("CV"));
+//			applyJob.setResume(request.getParameter("Resume"));
 			applyJob.setStatus("default");
 			WebResource webResource1 = client
 					.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/applyJob");

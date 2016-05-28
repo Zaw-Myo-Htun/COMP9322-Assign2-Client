@@ -33,7 +33,7 @@
 					<tr>
 						<form action="control" method="post">
 							<input type='hidden' name='action' value='DeleteSavedJob'>
-							<td><a href="/jobdetails?jobID=${d[0]}"><c:out value="${d[1]}" /></a></td>
+							<td><a href="control?action=ToJobDetail&jobID=${d[0]}"><c:out value="${d[1]}" /></a></td>
 							<td><c:out value="${d[6]}" /></td>
 							<td><input type="hidden" name="jobID" value="${d[0]}" /> <input
 								type="hidden" name="jobName" value="${d[1]}" /> <input

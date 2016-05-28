@@ -11,14 +11,13 @@
 				 -->
 				 
 <table class="table-hover">
-	<c:forEach var="d" items="details">
 		<tr>
 			<td>Job Title</td>
-			<td><%request.getParameter("jobID"); %>></td>
+			<td>${jobDetail[1]}</td>
 		</tr>
 		<tr>
 			<td>Job Description</td>
-			<td>${d[6]}</td>
+			<td>${jobDetail[6]}</td>
 		</tr>
 		<tr>
 			<td><input class="btn btn-primary" type="submit" value="Back"
@@ -26,6 +25,5 @@
 				type="submit" value="Apply" style="width: 100px" /></td>
 
 		</tr>
-	</c:forEach>
 </table>
 <%@ include file="footerEmployee.jsp"%>

@@ -27,14 +27,14 @@ public class CancelAppliedJobCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if(request.getParameter("jobStatus").equals("open")){
-			String jobID = request.getParameter("jobID");
-			//String jobID = "1";
-			String userID = request.getSession().getAttribute("userID").toString();
+//			String jobID = request.getParameter("jobID");
+//			String jobID = "1";
+//			String userID = request.getSession().getAttribute("userID").toString();
 			
-			SavedJobRequestDTO savejob = new SavedJobRequestDTO();
-			savejob.setJobID(jobID);
-			savejob.setUserID(userID);
-			dao.deleteSavedJob(savejob);
+//			SavedJobRequestDTO savejob = new SavedJobRequestDTO();
+//			savejob.setJobID(jobID);
+//			savejob.setUserID(userID);
+//			dao.deleteSavedJob(savejob);
 
 			ClientConfig clientConfig = new DefaultClientConfig();
 			clientConfig.getFeatures().put(
@@ -43,6 +43,7 @@ public class CancelAppliedJobCommand implements Command {
 			WebResource webResource = client
 					.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/jobApplication/"
 							+ request.getParameter("jobApplicationID") + "/delete");
+			System.out.println(request.getParameter("jobApplicationID"));
 			ClientResponse r = webResource.accept("application/json")
 					.header("SecurityKey", "i-am-foundit")
 					.header("ShortKey", "app-candidate")
@@ -54,12 +55,13 @@ public class CancelAppliedJobCommand implements Command {
 				System.out.println("aaaaa");
 				request.setAttribute("returnMessage", "The job has been canceled!");
 			}
+			
 		}else{
 			System.out.println("bbbbb");
 			request.setAttribute("returnMessage",
 					"The job has been closed. You cannot cancel it!");
 		}
-		RequestDispatcher rd = request.getRequestDispatcher("/control?action=ToAppliedJobCommand");
+		RequestDispatcher rd = request.getRequestDispatcher("/control?action=ToAppliedJob");
 		rd.forward(request, response);
 	}
 }
