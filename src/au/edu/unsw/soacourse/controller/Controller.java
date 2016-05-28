@@ -25,8 +25,8 @@ public class Controller extends HttpServlet {
 	private HashMap<Actions, Command> commands;
 
 	private enum Actions {
-		Register, AdminLogin,Activation,Login,ToEditProfile,EditProfile,RegProfile,SearchJob,
-		ToJobDetail
+		Register, AdminLogin,Activation,Login,ToEditProfile,EditProfile,RegProfile,SearchJob,SaveJob,
+		ToJobDetail,ToSavedJob,DeleteSavedJob,ApplyJob,ToJobList
 	};
 
 	public Controller() {
@@ -43,7 +43,11 @@ public class Controller extends HttpServlet {
 		commands.put(Actions.RegProfile, new RegProfileCommand());
 		commands.put(Actions.SearchJob, new SearchJobCommand());
 		commands.put(Actions.ToJobDetail, new ToJobDetailCommand());
-		
+		commands.put(Actions.SaveJob, new SaveJobCommand());
+		commands.put(Actions.ToJobList, new ToJobListCommand());
+		commands.put(Actions.ToSavedJob, new ToSavedJobCommand());
+		commands.put(Actions.DeleteSavedJob, new DeleteSavedJobCommand());
+		commands.put(Actions.ApplyJob, new ApplyJobCommand());
 	}
 
 	//

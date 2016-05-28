@@ -10,6 +10,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
@@ -18,6 +19,7 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 
 import au.edu.unsw.soacourse.model.JobSearchReponseDTO;
+import au.edu.unsw.soacourse.model.SavedJobRequestDTO;
 import au.edu.unsw.soacourse.dao.UserDao;
 
 public class SearchJobCommand implements Command {
@@ -59,7 +61,9 @@ public class SearchJobCommand implements Command {
 		if (r.getStatus() != 200) {
 			System.out.println(r.getStatus() + " ERROR");
 		}else{
-			System.out.println(r.getJobResults());
+			HttpSession session = request.getSession();
+			session.setAttribute("jobL", r.getJobResults());
+			System.out.print(r.getJobResults().get(0).get(4));
 			request.setAttribute("jobList", r.getJobResults());
 			RequestDispatcher rd = request.getRequestDispatcher("/joblist.jsp");
 			rd.forward(request, response);
