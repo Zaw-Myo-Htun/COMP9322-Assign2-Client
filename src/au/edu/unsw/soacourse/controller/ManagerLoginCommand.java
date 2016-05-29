@@ -8,9 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.config.ClientConfig;
+import com.sun.jersey.api.client.config.DefaultClientConfig;
+import com.sun.jersey.api.json.JSONConfiguration;
+
 import au.edu.unsw.soacourse.dao.UserDao;
+import au.edu.unsw.soacourse.model.ManagerJobListResponseDTO;
 import au.edu.unsw.soacourse.model.MangaerLoginRequestDTO;
 import au.edu.unsw.soacourse.model.User;
+import au.edu.unsw.soacourse.model.UserProfileResponseDTO;
 
 public class ManagerLoginCommand implements Command {
 	UserDao dao = new UserDao();
@@ -29,7 +37,7 @@ public class ManagerLoginCommand implements Command {
 				session.setAttribute("mName", m.getName());
 				session.setAttribute("mEmail", username);
 				session.setAttribute("managerID", m.getManagerID());
-				RequestDispatcher rd = request.getRequestDispatcher("/homepage.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/control?action=ToMgrHomePage");
 				rd.forward(request, response);
 		}else{
 			request.setAttribute("isValidUser", "false");

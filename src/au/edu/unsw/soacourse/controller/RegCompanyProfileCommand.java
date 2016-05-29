@@ -48,7 +48,9 @@ public class RegCompanyProfileCommand implements Command {
 		if (r.getStatus() != 201) {
 			System.out.println(r.getStatus() + " ERROR");
 		}else{
-			RequestDispatcher rd = request.getRequestDispatcher("/homepage.jsp"); 
+			System.out.println(request.getParameter("managerID"));
+			request.setAttribute("managerID", request.getParameter("managerID"));
+			RequestDispatcher rd = request.getRequestDispatcher("/addReviewer.jsp"); 
 			rd.forward (request, response); 
 		}
 	}
