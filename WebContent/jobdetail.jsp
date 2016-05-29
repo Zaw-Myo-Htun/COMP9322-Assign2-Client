@@ -11,7 +11,8 @@
 				 -->
 			<form method="post" action="control">
 					
-						<input type='hidden' name='action' value='ApplyJob'>	 
+						<input type='hidden' name='action' value='ApplyJob'>	
+						<input type='hidden' name='jobID' value='${jobDetail[0]}'>	 
 <table class="table-hover">
 		
 		<tr>

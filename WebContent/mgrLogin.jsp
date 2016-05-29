@@ -1,9 +1,10 @@
 <%@ include file="headerMananger.jsp" %>
 
 				<form method="post" action="control">
+				<input type='hidden' name='action' value='ManagerLogin'>
 					<center>
 						<h3>Manager Login Here</h3>
-						<input type='hidden' name='action' value='ManagerLogin'>
+						
 						<%
 							String isValidUser = request.getAttribute("isValidUser") == null ? "first"
 									: (String) request.getAttribute("isValidUser");

@@ -18,10 +18,7 @@ import com.sun.jersey.api.json.JSONConfiguration;
 import au.edu.unsw.soacourse.dao.UserDao;
 import au.edu.unsw.soacourse.model.ApplyJobRequestDTO;
 import au.edu.unsw.soacourse.model.CheckJobApplicationResponse;
-import au.edu.unsw.soacourse.model.GetCompanyIDResponseDTO;
-import au.edu.unsw.soacourse.model.JobAddRequestDTO;
 import au.edu.unsw.soacourse.model.JobSearchReponseDTO;
-import au.edu.unsw.soacourse.model.ManagerJobListResponseDTO;
 import au.edu.unsw.soacourse.model.RegistrationRequestDTO;
 import au.edu.unsw.soacourse.model.SavedJobRequestDTO;
 import au.edu.unsw.soacourse.model.User;
@@ -36,43 +33,48 @@ public class ApplyJobCommand implements Command {
 		clientConfig.getFeatures().put(
 				JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
 		Client client = Client.create(clientConfig);
+		System.out.println(request.getParameter("jobID"));
 		WebResource webResource = client
-				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/CompanyID/" +  request.getSession().getAttribute("managerID").toString());
+				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/checkJobApplication/"
+						+ request.getSession().getAttribute("userID").toString() + "/" + request.getParameter("jobID"));
 		
-		GetCompanyIDResponseDTO r = webResource.accept("application/json")
+		CheckJobApplicationResponse r = webResource.accept("application/json")
 				.header("SecurityKey", "i-am-foundit")
-				.header("ShortKey", "app-manager")
-				.type("application/json").get(GetCompanyIDResponseDTO.class);
-		
-			String companyID = r.getCompanyID();
-	
-		JobAddRequestDTO JobAdd = new JobAddRequestDTO();
-			String JobID = UUID.randomUUID().toString(); 
-			JobAdd.setJobID(JobID);
-			JobAdd.setJobName(request.getParameter("jobName"));
-			JobAdd.setCompanyProfileID(companyID);
-			JobAdd.setSalaryRate(Integer.parseInt(request.getParameter("salaryRate")));
-			JobAdd.setPositionType(request.getParameter("positionType"));
-			JobAdd.setLocation(request.getParameter("location"));
-			JobAdd.setJobDescription(request.getParameter("description"));
-			JobAdd.setStatus(request.getParameter("status"));
-			JobAdd.setKeyword(request.getParameter("keyword"));
-			JobAdd.setSkills(request.getParameter("skill"));
-			
+				.header("ShortKey", "app-candidate")
+				.type("application/json").get(CheckJobApplicationResponse.class);
+		if(r.isExists()){
+			// can't apply
+		}else{
+			ApplyJobRequestDTO applyJob = new ApplyJobRequestDTO();
+			String jobApplicationID = UUID.randomUUID().toString(); 
+			applyJob.setJobApplicationID(jobApplicationID);
+			applyJob.setJobID(request.getParameter("jobID"));
+			applyJob.setUserID(request.getSession().getAttribute("userID").toString());
+			applyJob.setAdr("ADR001");
+			applyJob.setDl("DL001");
+			applyJob.setCv("CV1");
+			applyJob.setResume("Resume1");
+//			applyJob.setJobID( request.getParameter("jobID"));
+//			applyJob.setUserID(request.getSession().getAttribute("userID").toString());
+//			applyJob.setAdr(request.getParameter("ADR"));
+//			applyJob.setDl(request.getParameter("DL"));
+//			applyJob.setCv(request.getParameter("CV"));
+//			applyJob.setResume(request.getParameter("Resume"));
+			applyJob.setStatus("default");
 			WebResource webResource1 = client
 					.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/applyJob");
 			ClientResponse r1 = webResource1.accept("application/json")
 					.header("SecurityKey", "i-am-foundit")
-					.header("ShortKey", "app-mananger")
+					.header("ShortKey", "app-candidate")
 					.type("application/json")
-					.post(ClientResponse.class, JobAdd);
+					.post(ClientResponse.class, applyJob);
 			if (r1.getStatus() != 201) {
 				System.out.println(r1.getStatus() + " ERROR");
 			} else {
-				RequestDispatcher rd = request.getRequestDispatcher("/control?action=ToMgrHomePage");
+				RequestDispatcher rd = request.getRequestDispatcher("/homepage.jsp");
 				rd.forward(request, response);
 			}
-		
+		}
 	}
 
 }
