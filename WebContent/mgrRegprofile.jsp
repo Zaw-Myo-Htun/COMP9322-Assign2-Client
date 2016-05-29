@@ -1,4 +1,4 @@
-<%@ include file="headerEmployee.jsp" %>
+<%@ include file="headerMananger.jsp" %>
 	<form method="post" action="control">
 			<input type='hidden' name='action' value='RegCompanyProfile'>
 			<input type='hidden' name='managerID' value=<%=request.getAttribute("managerID") %>>

@@ -1,4 +1,4 @@
-<%@ include file="headerEmployee.jsp" %>
+<%@ include file="headerMananger.jsp" %>
 				<h3>Register an Account</h3>
 				<form method="post" action="control"
 					onsubmit="return testInputData('uname','datepicker','email','pass');">
