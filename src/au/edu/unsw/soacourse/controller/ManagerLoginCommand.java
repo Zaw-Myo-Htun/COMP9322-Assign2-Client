@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import au.edu.unsw.soacourse.dao.UserDao;
+import au.edu.unsw.soacourse.model.MangaerLoginRequestDTO;
 import au.edu.unsw.soacourse.model.User;
 
 public class ManagerLoginCommand implements Command {
@@ -22,23 +23,17 @@ public class ManagerLoginCommand implements Command {
 		String pwd = request.getParameter("pass");
 		
 		
-		if(dao.isUserExist(username, pwd)){
-			if(!dao.isUserExistAndVerified(username)){
-				request.setAttribute("isValidUser", "verify");
-				RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
-				rd.forward(request, response);
-			}else{
-				User s = dao.getUser(username);
+		if(dao.isManagerExist(username, pwd)){
+				MangaerLoginRequestDTO m = dao.getManager(username);
 				HttpSession session = request.getSession();
-				session.setAttribute("cName", s.getName());
-				session.setAttribute("email", username);
-				session.setAttribute("userID", s.getUserID());
+				session.setAttribute("mName", m.getName());
+				session.setAttribute("mEmail", username);
+				session.setAttribute("managerID", m.getManagerID());
 				RequestDispatcher rd = request.getRequestDispatcher("/homepage.jsp");
 				rd.forward(request, response);
-			}
 		}else{
 			request.setAttribute("isValidUser", "false");
-			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/mgrLogin.jsp");
 			rd.forward(request, response);
 		}
 	}

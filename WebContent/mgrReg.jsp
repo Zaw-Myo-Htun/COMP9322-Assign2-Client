@@ -2,15 +2,15 @@
 				<h3>Register an Account</h3>
 				<form method="post" action="control"
 					onsubmit="return testInputData('uname','datepicker','email','pass');">
-					<input type="hidden" name="action" value="Register" />
+					<input type="hidden" name="action" value="ManagerRegister" />
 					<%
-						String isUserExist = request.getAttribute("isUserExist") == null ? "first"
-								: (String) request.getAttribute("isUserExist");
-						if (isUserExist.equalsIgnoreCase("true")) {
+						String isManagerExist = request.getAttribute("isManagerExist") == null ? "first"
+								: (String) request.getAttribute("isManagerExist");
+						if (isManagerExist.equalsIgnoreCase("true")) {
 					%>
 					<h3>Username is already Exist!</h3>
 					<%
-						} else if (isUserExist.equalsIgnoreCase("error")) {
+						} else if (isManagerExist.equalsIgnoreCase("error")) {
 					%>
 					<h3>Sending Email Error! Try Again</h3>
 

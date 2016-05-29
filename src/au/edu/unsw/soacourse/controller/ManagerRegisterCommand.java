@@ -62,7 +62,7 @@ public class ManagerRegisterCommand implements Command {
 			mgrProfile.setEmail(email);
 			mgrProfile.setPassword (pwd);
 			mgrProfile.setName(name);
-
+			dao.addManager(mgrProfile);
 			ClientConfig clientConfig = new DefaultClientConfig();
 			clientConfig.getFeatures().put(
 					JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
@@ -71,12 +71,13 @@ public class ManagerRegisterCommand implements Command {
 					.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/addManager");
 			ClientResponse r = webResource.accept("application/json")
 					.header("SecurityKey", "i-am-foundit")
-					.header("ShortKey", "app-candidate")
+					.header("ShortKey", "app-manager")
 					.type("application/json").post(ClientResponse.class, mgrProfile);
 			if (r.getStatus() != 201) {
 				System.out.println(r.getStatus() + " ERROR");
 			}else{
-				RequestDispatcher rd = request.getRequestDispatcher("/mgrLogin.jsp"); 
+				request.setAttribute("managerID", mgrID);
+				RequestDispatcher rd = request.getRequestDispatcher("/mgrRegprofile.jsp"); 
 				rd.forward (request, response); 
 			}
 		}else{

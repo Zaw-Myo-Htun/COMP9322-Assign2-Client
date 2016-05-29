@@ -27,7 +27,7 @@ public class Controller extends HttpServlet {
 	private enum Actions {
 		Register, AdminLogin,Activation,Login,ToEditProfile,EditProfile,RegProfile,SearchJob,SaveJob,
 		ToJobDetail,ToSavedJob,DeleteSavedJob,ApplyJob,ToJobList,ToAppliedJob,CancelAppliedJob,ToClientLogin,
-		ManagerLogin,ManagerRegister
+		ManagerLogin,ManagerRegister,RegCompanyProfile,ToManagerLogin
 	};
 
 	public Controller() {
@@ -54,6 +54,8 @@ public class Controller extends HttpServlet {
 		commands.put(Actions.ToClientLogin, new ToClientLoginCommand());
 		commands.put(Actions.ManagerLogin, new ManagerLoginCommand());
 		commands.put(Actions.ManagerRegister, new ManagerRegisterCommand());
+		commands.put(Actions.RegCompanyProfile, new RegCompanyProfileCommand());
+		commands.put(Actions.ToManagerLogin, new ToManagerLoginCommand());
 	}
 
 	//

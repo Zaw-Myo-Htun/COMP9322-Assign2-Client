@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import au.edu.unsw.soacourse.model.MangaerLoginRequestDTO;
 import au.edu.unsw.soacourse.model.SavedJobRequestDTO;
 import au.edu.unsw.soacourse.model.User;
 import au.edu.unsw.soacourse.util.JDBC_Connection;
@@ -263,5 +264,48 @@ public class UserDao {
 			}
 		}
 		return false;
+	}
+	
+	public void addManager(MangaerLoginRequestDTO mgr) {
+		JDBC_Connection conn = new JDBC_Connection();
+		connection = conn.getConnection();
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("insert into LOCALMANAGER"
+							+ "(MANAGERID, EMAIL, PASSWORD, NAME) values (?, ?, ?, ?)");
+			preparedStatement.setString(1, mgr.getManagerID());
+			preparedStatement.setString(2, mgr.getEmail());
+			preparedStatement.setString(3, mgr.getPassword());
+			preparedStatement.setString(4, mgr.getName());
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public MangaerLoginRequestDTO getManager(String username) {
+		JDBC_Connection conn = new JDBC_Connection();
+		connection = conn.getConnection();
+		MangaerLoginRequestDTO mgr = new MangaerLoginRequestDTO();
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("select * from LOCALMANAGER where EMAIL=?");
+			preparedStatement.setString(1, username);
+			ResultSet rs = preparedStatement.executeQuery();
+			if (rs.next()) {
+				mgr.setManagerID(rs.getString("MANAGERID"));
+				mgr.setName(rs.getString("NAME"));
+				mgr.setEmail(rs.getString("EMAIL"));
+				mgr.setPassword(rs.getString("PASSWORD"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try{
+				connection.close();
+			}catch(Exception e){
+				
+			}
+		}
+		return mgr;
 	}
 }

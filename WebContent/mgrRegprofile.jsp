@@ -1,42 +1,47 @@
 <%@ include file="headerEmployee.jsp" %>
 	<form method="post" action="control">
-			<input type='hidden' name='action' value='RegProfile'>
-			<input type='hidden' name='userID' value=<%=request.getAttribute("userID") %>>
+			<input type='hidden' name='action' value='RegCompanyProfile'>
+			<input type='hidden' name='managerID' value=<%=request.getAttribute("managerID") %>>
 						<table border="0" class="table">
 							<tbody>
 
 								<tr>
-									<td>Date of Birth</td>
+									<td>Company Name</td>
 									<td class="field"><input class="form-control" type="text"
-										id="dob" name="dob" value="<c:out value="${userProfile[3]}"/>" /></td>
+										id="companyName" name="companyName" value="" /></td>
 								</tr>
 
 								<tr>
-									<td>Current Position</td>
+									<td>Description</td>
 									<td class="field"><input class="form-control" type="text"
-										id="currentPosition" name="currentPosition" value="<c:out value="${userProfile[4]}"/>" /></td>
+										id="description" name="description" value="" /></td>
 								</tr>
 
 								<tr>
-									<td>Current Company</td>
+									<td>Website</td>
 									<td class="field"><input class="form-control" type="text"
-										id="currentCompany" name="currentCompany" value="<c:out value="${userProfile[5]}"/>" /></td>
+										id="website" name="website" value="" /></td>
 								</tr>
 
 								<tr>
-									<td>Highest Education</td>
+									<td>Industry Type</td>
 									<td class="field"><input class="form-control" type="text"
-										id="highestEducation" name="highestEducation" value="<c:out value="${userProfile[6]}"/>" /></td>
+										id="industryType" name="industryType" value="" /></td>
 								</tr>
 								<tr>
-									<td>Past Experience</td>
+									<td>Company Location</td>
 									<td class="field"><input class="form-control" type="text"
-										id="pastExperience" name="pastExperience" value="<c:out value="${userProfile[7]}"/>" /></td>
+										id="companyLocation" name="companyLocation" value=""/></td>
 								</tr>
 								<tr>
-									<td>Professional Skill</td>
+									<td>Headquaters</td>
 									<td class="field"><input class="form-control" type="text"
-										id="professionalSkills" name="professionalSkills" value="<c:out value="${userProfile[8]}"/>" /></td>
+										id="headquaters" name="headquaters" value=""/></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td class="field"><input type="submit"
+										class="btn btn-primary" value="Create" class="btn btn-primary" style="width:100px"/></td>
 								</tr>
 							</tbody>
 						</table>

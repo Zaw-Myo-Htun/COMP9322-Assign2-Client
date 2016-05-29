@@ -2,16 +2,12 @@
 
 				<form method="post" action="control">
 					<center>
-						<h3>Login Here</h3>
-						<input type='hidden' name='action' value='Login'>
+						<h3>Manager Login Here</h3>
+						<input type='hidden' name='action' value='ManagerLogin'>
 						<%
 							String isValidUser = request.getAttribute("isValidUser") == null ? "first"
 									: (String) request.getAttribute("isValidUser");
-							if (isValidUser.equalsIgnoreCase("verify")) {
-						%>
-						<h3>Please verify your account!</h3>
-						<%
-							} else if (isValidUser.equalsIgnoreCase("false")) {
+							if (isValidUser.equalsIgnoreCase("false")) {
 						%>
 						<h3>Wrong Account!</h3>
 
@@ -39,7 +35,7 @@
 										style="width: 100px" /></td>
 								</tr>
 								<tr>
-									<td colspan="2">Yet Not Registered!! <a href="reg.jsp">Register
+									<td colspan="2">Yet Not Registered!! <a href="mgrReg.jsp">Register
 											Here</a></td>
 								</tr>
 							</tbody>
