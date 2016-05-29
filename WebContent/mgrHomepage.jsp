@@ -1,11 +1,5 @@
 <%@ include file="headerMananger.jsp"%>
 
-<!-- <form action="/addjob" method="post">
-	<input type='hidden' name='action' value='AddJob' /> <input
-		type="hidden" name="jobID" value="${d[0]}" /> <input type="hidden"
-		name="jobName" value="${d[1]}" /> 
-</form>
-		 -->
 <input class="btn btn-primary btn-md" type="submit" value="Add Job"
 	style="width: 150px;" onClick="/addjob" />
 
