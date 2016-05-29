@@ -28,11 +28,6 @@
 				</tr>
 			</thead>
 			<tbody>
-				<!--
-							TODO -- only thing remaining here is correcting job list, job title and job description as used 
-											in servlet request
-						  -->
-
 				<c:forEach items="${requestScope.jobList}" var="d">
 					<tr>
 						<form action="control" method="post">
