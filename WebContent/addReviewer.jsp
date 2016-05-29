@@ -1,28 +1,34 @@
 <%@ include file="headerMananger.jsp"%>
 
 <form action="control" method="post">
-	<input type='hidden' name='action' value=AddReviewer>
+	<input type='hidden' name='action' value=AddReviewer> <input
+		type='hidden' name='managerID'
+		value=<%=request.getAttribute("managerID")%>>
 	<table class="table">
 		<tr>
 			<td><input class="form-control" type="text" id="nameReviewer"
-				name="nameReviewer" placeholder="Name" /></td>
+				name="username" placeholder="username" /></td>
 			<td><input class="form-control" type="password"
-				id="passwordReviewer" name="passwordReviewer" placeholder="Password" /></td>
+				id="passwordReviewer" name="password" placeholder="Password" /></td>
 			<td><input class="form-control" type="text" id="userReviewer"
-				name="userReviewer" placeholder="User ID" /></td>
+				name="name" placeholder="Name" /></td>
 			<td><input type="submit" class="btn btn-primary" value="Add"
-				class="btn btn-primary" style="width: 100px" onClick="Add()" /></td>
+				class="btn btn-primary" style="width: 100px" /></td>
 		</tr>
 	</table>
 </form>
 
-<c:forEach var="d" items="AddReviewerList">
+<c:forEach items="${requestScope.AddReviewerList}" var="d">
 	<table class="table">
 		<tr>
-			<td>${d[0]}</td>
-			<td>${d[1]}</td>
+			<td>${d[2]}</td>
+			<td>${d[3]}</td>
 		</tr>
 	</table>
 </c:forEach>
-
+<form action="mgrLogin.jsp" method="post">
+	 <input
+		type="submit" class="btn btn-primary" value="Finish"
+		class="btn btn-primary" style="width: 100px" />
+</form>
 <%@ include file="footerEmployee.jsp"%>

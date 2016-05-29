@@ -1,4 +1,4 @@
-<%@ include file="headerEmployee.jsp" %>
+<%@ include file="headerMananger.jsp" %>
 
 				<form method="post" action="control">
 					<center>

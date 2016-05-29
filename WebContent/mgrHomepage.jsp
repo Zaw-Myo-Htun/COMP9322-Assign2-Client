@@ -21,8 +21,12 @@
 	<tbody>
 		<c:forEach items="${requestScope.mgrJobList}" var="d">
 			<tr>
-				<td><a href="control?action=mgrToJobDetail&jobID=${d[0]}">${d[1]}</a></td>
-				<td>{d[6]}</td>
+				<td>${d[1]}</td>
+				<td>{d[3]}</td>
+				<td><input type="hidden" name="jobID" value="${d[0]}" />
+						<input type="hidden" name="jobIStatus" value="${d[3]}" /> 
+						<input class="btn btn-primary btn-md" type="submit" value="Process Job"
+							style="width: 150px;" /></td>
 			</tr>
 		</c:forEach>
 	</tbody>
