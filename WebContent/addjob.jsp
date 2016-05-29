@@ -45,6 +45,6 @@
 		</tr>
 	</table>
 	<input class="btn btn-primary btn-md" type="submit"
-		value="Add to Basket" style="width: 150px;" />
+		value="Add Job" style="width: 150px;" />
 </form>
 <%@ include file="footerEmployee.jsp"%>

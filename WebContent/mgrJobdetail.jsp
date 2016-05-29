@@ -1,6 +1,6 @@
 <%@ include file="headerMananger.jsp"%>
 <center>
-	<h3>Vacancy Details</h3>
+	<h3>Job Details</h3>
 </center>
 <br>
 <table class="table-hover">
@@ -64,12 +64,12 @@
 	<tr><!-- Change Hidden Values -->
 		<td><form method="post" action="control">
 				<input type='hidden' name='action' value=''> <input
-					class="btn btn-primary" type="submit" value="Close Job"
+					class="btn btn-primary" type="submit" value="Close Job EDT"
 					style="width: 100px" />
 			</form></td>
 		<td><form method="post" action="control">
 				<input type='hidden' name='action' value=''> <input
-					class="btn btn-primary" type="submit" value="View Applicants"
+					class="btn btn-primary" type="submit" value="View Applicants EDT"
 					style="width: 100px" />
 			</form></td>
 
