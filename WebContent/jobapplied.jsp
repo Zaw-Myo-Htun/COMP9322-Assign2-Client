@@ -5,7 +5,6 @@
 <br>
 <c:choose>
 	<c:when test="${requestScope.appliedJobs.isEmpty()}">
-		<!-- use system.out.println to determine the size of empty request -->
 		<p>Sorry, No Matching dataSets found!</p>
 	</c:when>
 	<c:otherwise>

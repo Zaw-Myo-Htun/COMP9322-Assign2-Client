@@ -14,7 +14,8 @@
 		</tbody>
 	</table>
 	<input type="submit" class="btn btn-primary" value="Add Reviewer"
-		class="btn btn-primary" style="width: 100px" />
+		class="btn btn-primary" style="width: 150px" />
+		<input type='hidden' name='action' value=''>
 </form>
 <br />
 <br />
@@ -35,7 +36,8 @@
 		</tbody>
 	</table>
 	<input type="submit" class="btn btn-primary" value="Send Notification"
-		class="btn btn-primary" style="width: 100px" />
+		class="btn btn-primary" style="width: 150px" />
+		<input type='hidden' name='action' value=''>
 </form>
 
 <%@ include file="footerEmployee.jsp"%>

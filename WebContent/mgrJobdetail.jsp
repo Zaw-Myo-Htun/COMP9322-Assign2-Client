@@ -64,12 +64,12 @@
 	<tr><!-- Change Hidden Values -->
 		<td><form method="post" action="control">
 				<input type='hidden' name='action' value=''> <input
-					class="btn btn-primary" type="submit" value="Close Job EDT"
+					class="btn btn-primary" type="submit" value="Close Job"
 					style="width: 100px" />
 			</form></td>
 		<td><form method="post" action="control">
 				<input type='hidden' name='action' value=''> <input
-					class="btn btn-primary" type="submit" value="View Applicants EDT"
+					class="btn btn-primary" type="submit" value="View Applicants"
 					style="width: 100px" />
 			</form></td>
 
