@@ -35,10 +35,6 @@
 										class="btn btn-primary" type="reset" value="Reset"
 										style="width: 100px" /></td>
 								</tr>
-								<tr>
-									<td colspan="2">Yet Not Registered!! <a href="mgrReg.jsp">Register
-											Here</a></td>
-								</tr>
 							</tbody>
 						</table>
 					</center>

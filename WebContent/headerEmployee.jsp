@@ -46,7 +46,7 @@
 						<!-- Only for first time & after logout -->
 						<li><a href="login.jsp">Candidate Login</a></li>
 						<li><a href="mgrLogin.jsp">Manager Login</a></li>
-						<li><a href="reviewerlogin.jsp">Reviewer Login</a></li>
+						<li><a href="reviewerLogin.jsp">Reviewer Login</a></li>
 					</c:if>
 				</ul>
 			</div>
