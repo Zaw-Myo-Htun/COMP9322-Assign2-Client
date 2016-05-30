@@ -28,7 +28,8 @@ public class Controller extends HttpServlet {
 		Register, AdminLogin,Activation,Login,ToEditProfile,EditProfile,RegProfile,SearchJob,SaveJob,
 		ToJobDetail,ToSavedJob,DeleteSavedJob,ApplyJob,ToJobList,ToAppliedJob,CancelAppliedJob,ToClientLogin,
 		ManagerLogin,ManagerRegister,RegCompanyProfile,ToManagerLogin,AddReviewer,ToMgrHomePage,AddJob,ProcessJob,
-		ViewApplicants,BackgroundCheck,JobAppAddReviewer,UpdateJobApp,SendEmailToUnsuccessful,ToApplicantOutcome
+		ViewApplicants,BackgroundCheck,JobAppAddReviewer,UpdateJobApp,SendEmailToUnsuccessful,ToApplicantOutcome,
+		UpdateStatusToInterview,ToUpdateStatusToInterview,ReviewerLogin
 	};
 
 	public Controller() {
@@ -67,6 +68,9 @@ public class Controller extends HttpServlet {
 		commands.put(Actions.UpdateJobApp, new UpdateJobAppCommand());
 		commands.put(Actions.SendEmailToUnsuccessful, new SendEmailToUnsuccessfulCommand());
 		commands.put(Actions.ToApplicantOutcome, new ToApplicantOutcomeCommand());
+		commands.put(Actions.UpdateStatusToInterview, new UpdateStatusToInterviewCommand());
+		commands.put(Actions.ToUpdateStatusToInterview, new ToUpdateStatusToInterviewCommand());
+		commands.put(Actions.ReviewerLogin, new ReviewerLoginCommand());
 	}
 
 	//

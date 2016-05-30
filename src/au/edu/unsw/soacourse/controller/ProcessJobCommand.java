@@ -19,6 +19,7 @@ import com.sun.jersey.api.json.JSONConfiguration;
 import au.edu.unsw.soacourse.model.GetCompanyIDResponseDTO;
 import au.edu.unsw.soacourse.model.JobAddRequestDTO;
 import au.edu.unsw.soacourse.model.JobSearchReponseDTO;
+import au.edu.unsw.soacourse.model.ReviewedCandidateResponseDTO;
 import au.edu.unsw.soacourse.model.UserProfileResponseDTO;
 
 public class ProcessJobCommand implements Command {
@@ -63,7 +64,21 @@ public class ProcessJobCommand implements Command {
 				}
 			}
 		} else if (request.getParameter("jobStatus").equals("reviewer")) {
+			WebResource webResource4 = client
+					.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/reviewedApplicants/" + request.getParameter("jobID"));
 
+			ReviewedCandidateResponseDTO r4 = webResource4.accept("application/json")
+					.header("SecurityKey", "i-am-foundit")
+					.header("ShortKey", "app-manager").type("application/json")
+					.get(ReviewedCandidateResponseDTO.class);
+			if (r4.getStatus() != 200) {
+				System.out.println(r4.getStatus() + " ERROR");
+			} else {
+				request.setAttribute("jobID", request.getParameter("jobID"));
+				request.setAttribute("reviewedApplicants", r4.getReviewedApplicants());
+				RequestDispatcher rd = request.getRequestDispatcher("/updatetointerview.jsp"); 
+				rd.forward (request, response); 
+			}
 		} else if (request.getParameter("jobStatus").equals("interviewer")) {
 
 		} else if (request.getParameter("jobStatus").equals("end")) {

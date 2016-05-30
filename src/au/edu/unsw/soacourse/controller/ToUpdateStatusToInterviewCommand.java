@@ -15,24 +15,21 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 
-import au.edu.unsw.soacourse.model.ShortListApplicantsResponseDTO;
 import au.edu.unsw.soacourse.model.CompanyAddRequestDTO;
 import au.edu.unsw.soacourse.model.GetCandidateResponseDTO;
 import au.edu.unsw.soacourse.model.ReviewedCandidateResponseDTO;
-import au.edu.unsw.soacourse.model.ShortListApplicantsRequestDTO;
 
-public class UpdateStatusToInterviewCommand implements Command {
+public class ToUpdateStatusToInterviewCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-//shortListApplicants
+		//set  jsp
+		//reviewedApplicants
 		
 		ClientConfig clientConfig = new DefaultClientConfig();
 		clientConfig.getFeatures().put(
 				JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
 		Client client = Client.create(clientConfig);
-		
 		WebResource webResource4 = client
 				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/reviewedApplicants/" + request.getParameter("jobID"));
 
@@ -40,18 +37,13 @@ public class UpdateStatusToInterviewCommand implements Command {
 				.header("SecurityKey", "i-am-foundit")
 				.header("ShortKey", "app-manager").type("application/json")
 				.get(ReviewedCandidateResponseDTO.class);
-		
-		WebResource webResource = client
-				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/shortListApplicants");
-		ShortListApplicantsResponseDTO r = webResource.accept("application/json")
-				.header("SecurityKey", "i-am-foundit")
-				.header("ShortKey", "app-manager")
-				.type("application/json").post(ShortListApplicantsResponseDTO.class, r4);
-		if (r.getStatus() != 201) {
-			System.out.println(r.getStatus() + " ERROR");
-		}else{
-			RequestDispatcher rd = request.getRequestDispatcher("/control?action=ToMgrHomePage");
-			rd.forward(request, response);
+		if (r4.getStatus() != 200) {
+			System.out.println(r4.getStatus() + " ERROR");
+		} else {
+			request.setAttribute("jobID", request.getParameter("jobID"));
+			request.setAttribute("reviewedApplicants", r4.getReviewedApplicants());
+			RequestDispatcher rd = request.getRequestDispatcher("/.jsp"); 
+			rd.forward (request, response); 
 		}
 	}
 
