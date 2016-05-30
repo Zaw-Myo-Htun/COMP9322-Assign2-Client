@@ -41,38 +41,15 @@
 		<td>Skill</td>
 		<td>${jobDetail[9]}</td>
 	</tr>
-	<tr>
-		<td>Driver's Licence</td>
-		<td><input class="form-control" type="text" id="DL" name="DL"
-			placeholder="Driver's Licence" format /></td>
-	</tr>
-	<tr>
-		<td>Address</td>
-		<td><input class="form-control" type="text" id="DL" name="ADR"
-			placeholder="Address" /></td>
-	</tr>
-	<tr>
-		<td>Resume</td>
-		<td><input class="form-control" type="text" id="DL" name="Resume"
-			value="${jobDetail[10]}" /></td>
-	</tr>
-	<tr>
-		<td>CV</td>
-		<td><input class="form-control" type="text" id="DL" name="CV"
-			value="${jobDetail[11]}" /></td>
-	</tr>
 	<tr><!-- Change Hidden Values -->
 		<td><form method="post" action="control">
-				<input type='hidden' name='action' value=''> <input
-					class="btn btn-primary" type="submit" value="Close Job"
-					style="width: 100px" />
-			</form></td>
-		<td><form method="post" action="control">
-				<input type='hidden' name='action' value=''> <input
+				
+				<input type='hidden' name='action' value='ViewApplicants'>
+				<input type='hidden' name='jobID' value="${jobDetail[0]}">
+				<input
 					class="btn btn-primary" type="submit" value="View Applicants"
-					style="width: 100px" />
+					style="width: 125px" />
 			</form></td>
-
 	</tr>
 </table>
 

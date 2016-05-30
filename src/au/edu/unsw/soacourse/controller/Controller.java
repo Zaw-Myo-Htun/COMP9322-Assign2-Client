@@ -27,7 +27,8 @@ public class Controller extends HttpServlet {
 	private enum Actions {
 		Register, AdminLogin,Activation,Login,ToEditProfile,EditProfile,RegProfile,SearchJob,SaveJob,
 		ToJobDetail,ToSavedJob,DeleteSavedJob,ApplyJob,ToJobList,ToAppliedJob,CancelAppliedJob,ToClientLogin,
-		ManagerLogin,ManagerRegister,RegCompanyProfile,ToManagerLogin,AddReviewer,ToMgrHomePage,AddJob
+		ManagerLogin,ManagerRegister,RegCompanyProfile,ToManagerLogin,AddReviewer,ToMgrHomePage,AddJob,ProcessJob,
+		ViewApplicants,BackgroundCheck,JobAppAddReviewer,UpdateJobApp,SendEmailToUnsuccessful,ToApplicantOutcome
 	};
 
 	public Controller() {
@@ -59,6 +60,13 @@ public class Controller extends HttpServlet {
 		commands.put(Actions.AddReviewer, new AddReviewerCommand());
 		commands.put(Actions.ToMgrHomePage, new ToMgrHomePageCommand());
 		commands.put(Actions.AddJob, new AddJobCommand());
+		commands.put(Actions.ProcessJob, new ProcessJobCommand());
+		commands.put(Actions.ViewApplicants, new ViewApplicantsCommand());
+		commands.put(Actions.BackgroundCheck, new BackgroundCheckCommand());
+		commands.put(Actions.JobAppAddReviewer, new JobAppAddReviewerCommand());
+		commands.put(Actions.UpdateJobApp, new UpdateJobAppCommand());
+		commands.put(Actions.SendEmailToUnsuccessful, new SendEmailToUnsuccessfulCommand());
+		commands.put(Actions.ToApplicantOutcome, new ToApplicantOutcomeCommand());
 	}
 
 	//

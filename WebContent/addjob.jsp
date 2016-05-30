@@ -1,6 +1,6 @@
 <%@ include file="headerMananger.jsp"%>
 <form action="control" method="post">
-<input type='hidden' name='action' value='ApplyJob'>
+<input type='hidden' name='action' value='AddJob'>
 						
 	<table class="table">
 		<tr>
@@ -41,7 +41,7 @@
 		<tr>
 			<td></td>
 			<td ><input class="form-control" type="text"
-				id="" name="skils" placeholder="Skills"/></td>
+				id="" name="skill" placeholder="Skills"/></td>
 		</tr>
 	</table>
 	<input class="btn btn-primary btn-md" type="submit"
