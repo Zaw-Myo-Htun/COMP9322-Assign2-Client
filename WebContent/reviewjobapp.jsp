@@ -1,4 +1,4 @@
-<%@ include file="headerMananger.jsp"%>
+<%@ include file="headerReviewer.jsp"%>
 	<table class="table">
 		<thead>
 			<th>Candidate Name</th>

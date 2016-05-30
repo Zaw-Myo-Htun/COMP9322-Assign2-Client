@@ -1,4 +1,4 @@
-<%@ include file="headerMananger.jsp" %>
+<%@ include file="headerReviewer.jsp" %>
 
 				<form method="post" action="control">
 				<input type='hidden' name='action' value='ManagerLogin'>
