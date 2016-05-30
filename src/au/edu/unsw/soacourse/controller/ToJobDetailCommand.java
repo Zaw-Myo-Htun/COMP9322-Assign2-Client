@@ -30,8 +30,6 @@ public class ToJobDetailCommand implements Command {
 		Client client = Client.create(clientConfig);
 		WebResource webResource = client
 				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/job/" + request.getParameter("jobID"));
-//		WebResource webResource = client
-//				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/job/1");
 		
 		JobSearchReponseDTO r = webResource.accept("application/json")
 				.header("SecurityKey", "i-am-foundit")

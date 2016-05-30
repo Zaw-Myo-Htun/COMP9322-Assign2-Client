@@ -43,23 +43,18 @@ public class ApplyJobCommand implements Command {
 				.header("ShortKey", "app-candidate")
 				.type("application/json").get(CheckJobApplicationResponse.class);
 		if(r.isExists()){
-			// can't apply
+			RequestDispatcher rd = request.getRequestDispatcher("/control?action=ToJobList&returnMessage='Job has already been applied!'");
+			rd.forward(request, response);
 		}else{
 			ApplyJobRequestDTO applyJob = new ApplyJobRequestDTO();
 			String jobApplicationID = UUID.randomUUID().toString(); 
 			applyJob.setJobApplicationID(jobApplicationID);
 			applyJob.setJobID(request.getParameter("jobID"));
 			applyJob.setUserID(request.getSession().getAttribute("userID").toString());
-			applyJob.setAdr("ADR001");
-			applyJob.setDl("DL001");
-			applyJob.setCv("CV1");
-			applyJob.setResume("Resume1");
-//			applyJob.setJobID( request.getParameter("jobID"));
-//			applyJob.setUserID(request.getSession().getAttribute("userID").toString());
-//			applyJob.setAdr(request.getParameter("ADR"));
-//			applyJob.setDl(request.getParameter("DL"));
-//			applyJob.setCv(request.getParameter("CV"));
-//			applyJob.setResume(request.getParameter("Resume"));
+			applyJob.setAdr(request.getParameter("ADR"));
+			applyJob.setDl(request.getParameter("DL"));
+			applyJob.setCv(request.getParameter("CV"));
+			applyJob.setResume(request.getParameter("Resume"));
 			applyJob.setStatus("default");
 			WebResource webResource1 = client
 					.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/applyJob");

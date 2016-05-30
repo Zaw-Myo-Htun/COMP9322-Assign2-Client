@@ -22,6 +22,7 @@ public class ToJobListCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			System.out.print(request.getSession().getAttribute("jobL"));
+			request.setAttribute("returnMessage",request.getParameter("returnMessage"));
 			request.setAttribute("jobList",request.getSession().getAttribute("jobL"));
 			RequestDispatcher rd = request.getRequestDispatcher("/joblist.jsp");
 			rd.forward(request, response);

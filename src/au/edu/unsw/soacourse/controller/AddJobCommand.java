@@ -16,14 +16,8 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 
 import au.edu.unsw.soacourse.dao.UserDao;
-import au.edu.unsw.soacourse.model.ApplyJobRequestDTO;
-import au.edu.unsw.soacourse.model.CheckJobApplicationResponse;
 import au.edu.unsw.soacourse.model.GetCompanyIDResponseDTO;
 import au.edu.unsw.soacourse.model.JobAddRequestDTO;
-import au.edu.unsw.soacourse.model.JobSearchReponseDTO;
-import au.edu.unsw.soacourse.model.RegistrationRequestDTO;
-import au.edu.unsw.soacourse.model.SavedJobRequestDTO;
-import au.edu.unsw.soacourse.model.User;
 
 public class AddJobCommand implements Command {
 	UserDao dao = new UserDao();
@@ -53,16 +47,16 @@ public class AddJobCommand implements Command {
 			JobAdd.setSalaryRate(Integer.parseInt(request.getParameter("salaryRate")));
 			JobAdd.setPositionType(request.getParameter("positionType"));
 			JobAdd.setLocation(request.getParameter("location"));
-			JobAdd.setJobDescription(request.getParameter("description"));
-			JobAdd.setStatus(request.getParameter("status"));
+			JobAdd.setJobDescription(request.getParameter("jobDescription"));
+			JobAdd.setStatus(request.getParameter("jobStatus"));
 			JobAdd.setKeyword(request.getParameter("keyword"));
 			JobAdd.setSkills(request.getParameter("skill"));
 			
 			WebResource webResource1 = client
-					.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/applyJob");
+					.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/addjob");
 			ClientResponse r1 = webResource1.accept("application/json")
 					.header("SecurityKey", "i-am-foundit")
-					.header("ShortKey", "app-mananger")
+					.header("ShortKey", "app-manager")
 					.type("application/json")
 					.post(ClientResponse.class, JobAdd);
 			if (r1.getStatus() != 201) {
