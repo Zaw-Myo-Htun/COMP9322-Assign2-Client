@@ -1,0 +1,15 @@
+<rss version="2.0">
+	<channel>
+		<title></title>
+		<description>Latest Jobs Avaliable</description>
+		<link>/login.jsp</link>
+		<category></category>
+		<copyrights>Copyright 2016 FoundIT App</copyrights>
+		<language>en-us</language>
+		<item>
+			<title>Job Title 1</title>
+			<description>Job Description</description>
+			<link>/url of job 1</link>
+		</item>
+	</channel>
+</rss>

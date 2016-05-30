@@ -41,6 +41,7 @@
 						<li><a href="control?action=ToSavedJob">Job Basket</a></li>
 						<li><a href="control?action=ToAppliedJob">Applied Jobs</a></li>
 						<li><a href="logout.jsp">Logout</a></li>
+						<li><a href="rss.xml"><img src="img_rss.gif" alt="Smiley face" width="42" height="42"></a></li>
 					</c:if>
 					<c:if test="${empty sessionScope.userID}">
 						<!-- Only for first time & after logout -->
