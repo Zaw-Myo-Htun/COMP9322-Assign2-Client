@@ -34,15 +34,15 @@
 
 				<ul class="nav navbar-nav navbar-left">
 					<li></li>
-					<c:if test="${not empty sessionScope.managerID}">
+					<c:if test="${not empty sessionScope.reviewerID}">
 						<!-- <li><a href="homepage.jsp">Manager Home</a></li>
 						<li><a href="control?action=ToEditProfile">Manager1</a></li>
 						<li><a href="control?action=ToJobList">Job Manager1</a></li>
 						<li><a href="control?action=ToSavedJob">Manager1 Basket</a></li>
 						<li><a href="control?action=ToAppliedJob">Manager1 Jobs</a></li> -->
-						<li><a href="mgrLogout.jsp">Logout</a></li>
+						<li><a href="reviewerLogout.jsp">Logout</a></li>
 					</c:if>
-					<c:if test="${empty sessionScope.managerID}">
+					<c:if test="${empty sessionScope.reviewerID}">
 						<!-- Only for first time & after logout -->
 						<li><a href="login.jsp">Candidate Login</a></li>
 						<li><a href="mgrLogin.jsp">Manager Login</a></li>
@@ -61,65 +61,72 @@
 				</center>
 			</h2>
 		</div>
-		<form action="control" method="post">
-			<div class="row">
-				<div class="col-sm-2"></div>
-				<div class="col-sm-4">
-					<table class="table">
-						<tr>
-							<td>Candidate Name</td>
-							<td>${}</td>
-						</tr>
-						<tr>
-							<td>Email</td>
-							<td>${}</td>
-						</tr>
-						<tr>
-							<td>Date of Birth</td>
-							<td>${}</td>
-						</tr>
-						<tr>
-							<td>CV</td>
-							<td>${}</td>
-						</tr>
-						<tr>
-							<td>Resume</td>
-							<td>${}</td>
-						</tr>
-					</table>
-				</div>
-				<div class="col-sm-4">
 
-					<table class="table">
-						<tr>
-							<td>Job Title</td>
-							<td>${}</td>
-						</tr>
-						<tr>
-							<td>Company</td>
-							<td>${}</td>
-						</tr>
-						<tr>
-							<td>Job Description</td>
-							<td>${}</td>
-						</tr>
-					</table>
-
-				</div>
-				<div class="col-sm-2"></div>
+		<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-4">
+				<table class="table">
+					<tr>
+						<td>Candidate Name</td>
+						<td>${jobAppDetail[4]}</td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td>${jobAppDetail[5]}</td>
+					</tr>
+					<tr>
+						<td>Date of Birth</td>
+						<td>${jobAppDetail[6]}</td>
+					</tr>
+					<tr>
+						<td>CV</td>
+						<td>${jobAppDetail[9]}</td>
+					</tr>
+					<tr>
+						<td>Resume</td>
+						<td>${jobAppDetail[8]}</td>
+					</tr>
+				</table>
 			</div>
-			<div class="row">
-				<div class="col-sm-4"></div>
-				<div class="col-sm-4">
-					<input type='hidden' name='' value=''> <input
+			<div class="col-sm-4">
+
+				<table class="table">
+					<tr>
+						<td>Job Title</td>
+						<td>${jobAppDetail[2]}</td>
+					</tr>
+					<tr>
+						<td>Job Description</td>
+						<td>${jobAppDetail[3]}</td>
+					</tr>
+				</table>
+
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<form action="control" method="post">
+					<input type='hidden' name='action' value='InfoYesNo'>
+					<input type='hidden' name='YesNo' value='yes'>
+					<input type='hidden' name='jobAppID' value='${jobAppDetail[0]}'>
+					 <input
 						class="btn btn-primary btn-sm" type="submit" value="Yes"
-						style="width: 200px;" /><input class="btn btn-primary btn-sm"
-						type="submit" value="No" style="width: 200px;" />
-				</div>
-				<div class="col-sm-2"></div>
+						style="width: 200px;" />
+				</form>
+				<form action="control" method="post">
+				<input type='hidden' name='action' value='InfoYesNo'>
+					<input type='hidden' name='YesNo' value='no'>
+					<input type='hidden' name='jobAppID' value='${jobAppDetail[0]}'>
+					<input class="btn btn-primary btn-sm" type="submit" value="No"
+						style="width: 200px;" />
+				</form>
 			</div>
+			<div class="col-sm-2"></div>
+		</div>
 
-		</form>
+
 
 	</div>
 
