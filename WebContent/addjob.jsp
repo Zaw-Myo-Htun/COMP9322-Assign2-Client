@@ -1,4 +1,5 @@
 <%@ include file="headerMananger.jsp"%>
+<h3>Add Job</h3>
 <form action="control" method="post">
 <input type='hidden' name='action' value='AddJob'>
 						

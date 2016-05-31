@@ -4,6 +4,7 @@ WHERE JOBAPPLICATION.USERID=JOBSEEKER.USERID AND
 JOBAPPLICATION.JOB_ID=?";
  -->
 <%@ include file="headerMananger.jsp"%>
+<h3>Applicant List</h3>
 <table class="table">
 	<tr>
 	<td>Applicant Name</td>
