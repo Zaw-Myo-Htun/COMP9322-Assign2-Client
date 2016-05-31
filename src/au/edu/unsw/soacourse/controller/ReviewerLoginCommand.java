@@ -35,7 +35,7 @@ public class ReviewerLoginCommand implements Command {
 		
 		//loginReviewer
 		LoginReviewerRequestDTO rLogin = new LoginReviewerRequestDTO(); 
-		rLogin.setUsername(username);
+		rLogin.setEmail(username);
 		rLogin.setPassword(pwd);
 		
 		ClientConfig clientConfig = new DefaultClientConfig();
@@ -53,9 +53,9 @@ public class ReviewerLoginCommand implements Command {
 		}else{
 			if(r.getLogin()){
 				HttpSession session = request.getSession();
-				//set id of r
-			//	session.setAttribute("managerID", m.getManagerID()); 
-				RequestDispatcher rd = request.getRequestDispatcher("/control?action=ToMgrHomePage");
+				session.setAttribute("reviewerID",r.getReviewerID()); 
+				RequestDispatcher rd = request.getRequestDispatcher("/control?action=ToReviewerHomePage");
+				rd.forward(request, response);
 			}else{
 				request.setAttribute("isValidUser", "false");
 				RequestDispatcher rd = request.getRequestDispatcher("/reviewerLogin.jsp");

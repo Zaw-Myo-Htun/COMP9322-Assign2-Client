@@ -1,7 +1,7 @@
 <%@ include file="headerReviewer.jsp" %>
 
 				<form method="post" action="control">
-				<input type='hidden' name='action' value='ManagerLogin'>
+				<input type='hidden' name='action' value='ReviewerLogin'>
 					<center>
 						<h3>Reviewer Login Here</h3>
 						

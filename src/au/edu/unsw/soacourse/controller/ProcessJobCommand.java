@@ -16,6 +16,8 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 
+import au.edu.unsw.soacourse.model.GetFinalResultResponseDTO;
+import au.edu.unsw.soacourse.model.GetInterviewApplicantsResponseDTO;
 import au.edu.unsw.soacourse.model.GetCompanyIDResponseDTO;
 import au.edu.unsw.soacourse.model.JobAddRequestDTO;
 import au.edu.unsw.soacourse.model.JobSearchReponseDTO;
@@ -74,15 +76,46 @@ public class ProcessJobCommand implements Command {
 			if (r4.getStatus() != 200) {
 				System.out.println(r4.getStatus() + " ERROR");
 			} else {
+				System.out.println(r4.getReviewedApplicants());
 				request.setAttribute("jobID", request.getParameter("jobID"));
 				request.setAttribute("reviewedApplicants", r4.getReviewedApplicants());
 				RequestDispatcher rd = request.getRequestDispatcher("/updatetointerview.jsp"); 
 				rd.forward (request, response); 
 			}
 		} else if (request.getParameter("jobStatus").equals("interviewer")) {
+			WebResource webResource3 = client
+					.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/interview/" + request.getParameter("jobID"));
 
+			GetInterviewApplicantsResponseDTO r3 = webResource3.accept("application/json")
+					.header("SecurityKey", "i-am-foundit")
+					.header("ShortKey", "app-manager").type("application/json")
+					.get(GetInterviewApplicantsResponseDTO.class);
+			if (r3.getStatus() != 200) {
+				System.out.println(r3.getStatus() + " ERROR");
+			} else {
+				System.out.println(r3.getApplicants());
+				request.setAttribute("jobID", request.getParameter("jobID"));
+				request.setAttribute("applicants", r3.getApplicants());
+				RequestDispatcher rd = request.getRequestDispatcher("/interview.jsp"); 
+				rd.forward (request, response); 
+			}
 		} else if (request.getParameter("jobStatus").equals("end")) {
+			WebResource webResource3 = client
+					.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/finalApplicant/" + request.getParameter("jobID"));
 
+			GetFinalResultResponseDTO r3 = webResource3.accept("application/json")
+					.header("SecurityKey", "i-am-foundit")
+					.header("ShortKey", "app-manager").type("application/json")
+					.get(GetFinalResultResponseDTO.class);
+			if (r3.getStatus() != 200) {
+				System.out.println(r3.getStatus() + " ERROR");
+			} else {
+				System.out.println(r3.getFinalApplicants());
+				request.setAttribute("jobID", request.getParameter("jobID"));
+				request.setAttribute("applicants", r3.getFinalApplicants());
+				RequestDispatcher rd = request.getRequestDispatcher("/result.jsp"); 
+				rd.forward (request, response); 
+			}
 		}
 	}
 

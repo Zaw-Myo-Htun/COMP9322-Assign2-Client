@@ -5,13 +5,13 @@
 			<th></th>
 		</thead>
 		<tbody>
-			<c:forEach var="j" items="${}">
-				<tr>
+			<c:forEach var="j" items="${requestScope.JobAppList}">
 			<form action="control" method="post">
-					<input type='hidden' name='' value=''>
-					<td>${}</td>
+					<input type='hidden' name='action' value='Info'>
+					<input type='hidden' name='jobAppID' value='${j[0]}'>
+					<td>${j[1]}</td>
 					<td><input class="btn btn-primary btn-sm" type="submit"
-						value="Accept/Reject" style="width: 200px;" /></td>
+						value="To Accept/Reject" style="width: 200px;" /></td>
 				</form>
 			</tr>
 		</c:forEach>
