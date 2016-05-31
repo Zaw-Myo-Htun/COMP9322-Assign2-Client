@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import au.edu.unsw.soacourse.dao.UserDao;
 import au.edu.unsw.soacourse.model.EmailRequestDTO;
-import au.edu.unsw.soacourse.model.RegistrationRequestDTO;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
@@ -30,9 +29,8 @@ public class RegisterCommand implements Command {
 		
 		
 		if(!dao.isEmailExist(email)) { 
-			System.out.println("asdasdasda");
 			EmailRequestDTO emailDTO = new EmailRequestDTO(); 
-			String emailLink = "Press the link to activate: http://localhost:8080/COMP9322—assn2–client/control?action=Activation&email="
+			String emailLink = "Press the link to activate: http://localhost:8080/COMP9322-Assign2-Client/control?action=Activation&email="
 					+ email + "&name=" + name+ "&pwd=" + pwd; 
 			emailDTO.setEmail(email); 
 			emailDTO.setMessage("Please verify!\n" + emailLink); 
@@ -44,17 +42,17 @@ public class RegisterCommand implements Command {
 			WebResource webResource = client
 					.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/email");
 			ClientResponse r = webResource.accept("application/json")
-					.header("Authorization", "i-am-foundit")
-					.header("Authorization", "app-candidate")
+					.header("SecurityKey", "i-am-foundit")
+					.header("ShortKey", "app-candidate")
 					.type("application/json").post(ClientResponse.class, emailDTO);
-			if (response.getStatus() != 201) {
+			if (r.getStatus() != 201) {
 				request.setAttribute("isUserExist", "error");
 				RequestDispatcher rd = request.getRequestDispatcher("/reg.jsp"); 
 				rd.forward (request, response); 
 			}else{
-				request.setAttribute("isUserExist", "verify");
+				request.setAttribute("isValidUser", "verify");
 				RequestDispatcher rd = request.getRequestDispatcher("/login.jsp"); 
-				rd.forward (request, response); 
+				rd.forward (request, response);
 			}
 		}else{
 			request.setAttribute("isUserExist", "true");

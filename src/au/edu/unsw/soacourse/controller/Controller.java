@@ -25,7 +25,12 @@ public class Controller extends HttpServlet {
 	private HashMap<Actions, Command> commands;
 
 	private enum Actions {
-		Register, AdminLogin,Activation,Login,ToEditProfile,EditProfile
+		Register, AdminLogin,Activation,Login,ToEditProfile,EditProfile,RegProfile,SearchJob,SaveJob,
+		ToJobDetail,ToSavedJob,DeleteSavedJob,ApplyJob,ToJobList,ToAppliedJob,CancelAppliedJob,ToClientLogin,
+		ManagerLogin,ManagerRegister,RegCompanyProfile,ToManagerLogin,AddReviewer,ToMgrHomePage,AddJob,ProcessJob,
+		ViewApplicants,BackgroundCheck,JobAppAddReviewer,UpdateJobApp,SendEmailToUnsuccessful,ToApplicantOutcome,
+		UpdateStatusToInterview,ToUpdateStatusToInterview,ReviewerLogin,ToReviewerLogin,ToReviewerHomePage,Info,InfoYesNo,
+		updateResult,InterviewAccept
 	};
 
 	public Controller() {
@@ -39,7 +44,40 @@ public class Controller extends HttpServlet {
 		commands.put(Actions.Login, new LoginCommand());
 		commands.put(Actions.ToEditProfile, new ToEditProfileCommand());
 		commands.put(Actions.EditProfile, new EditProfileCommand());
-
+		commands.put(Actions.RegProfile, new RegProfileCommand());
+		commands.put(Actions.SearchJob, new SearchJobCommand());
+		commands.put(Actions.ToJobDetail, new ToJobDetailCommand());
+		commands.put(Actions.SaveJob, new SaveJobCommand());
+		commands.put(Actions.ToJobList, new ToJobListCommand());
+		commands.put(Actions.ToSavedJob, new ToSavedJobCommand());
+		commands.put(Actions.DeleteSavedJob, new DeleteSavedJobCommand());
+		commands.put(Actions.ApplyJob, new ApplyJobCommand());
+		commands.put(Actions.ToAppliedJob, new ToAppliedJobCommand());
+		commands.put(Actions.CancelAppliedJob, new CancelAppliedJobCommand());
+		commands.put(Actions.ToClientLogin, new ToClientLoginCommand());
+		commands.put(Actions.ManagerLogin, new ManagerLoginCommand());
+		commands.put(Actions.ManagerRegister, new ManagerRegisterCommand());
+		commands.put(Actions.RegCompanyProfile, new RegCompanyProfileCommand());
+		commands.put(Actions.ToManagerLogin, new ToManagerLoginCommand());
+		commands.put(Actions.AddReviewer, new AddReviewerCommand());
+		commands.put(Actions.ToMgrHomePage, new ToMgrHomePageCommand());
+		commands.put(Actions.AddJob, new AddJobCommand());
+		commands.put(Actions.ProcessJob, new ProcessJobCommand());
+		commands.put(Actions.ViewApplicants, new ViewApplicantsCommand());
+		commands.put(Actions.BackgroundCheck, new BackgroundCheckCommand());
+		commands.put(Actions.JobAppAddReviewer, new JobAppAddReviewerCommand());
+		commands.put(Actions.UpdateJobApp, new UpdateJobAppCommand());
+		commands.put(Actions.SendEmailToUnsuccessful, new SendEmailToUnsuccessfulCommand());
+		commands.put(Actions.ToApplicantOutcome, new ToApplicantOutcomeCommand());
+		commands.put(Actions.UpdateStatusToInterview, new UpdateStatusToInterviewCommand());
+		commands.put(Actions.ToUpdateStatusToInterview, new ToUpdateStatusToInterviewCommand());
+		commands.put(Actions.ReviewerLogin, new ReviewerLoginCommand());
+		commands.put(Actions.ToReviewerLogin, new ToReviewerLoginCommand());
+		commands.put(Actions.ToReviewerHomePage, new ToReviewerHomePageCommand());
+		commands.put(Actions.Info, new InfoCommand());
+		commands.put(Actions.InfoYesNo, new InfoYesNoCommand());
+		commands.put(Actions.updateResult, new updateResultCommand());
+		commands.put(Actions.InterviewAccept, new InterviewAcceptCommand());
 	}
 
 	//

@@ -30,17 +30,19 @@ public class EditProfileCommand implements Command {
 		userProfile.setPastExperience(request.getParameter("pastExperience")); 
 		userProfile.setProfessionalSkills (request.getParameter("professionalSkills"));
 		userProfile.setResume (request.getParameter("resume"));
-
+		userProfile.setCoverLetter(request.getParameter("cLetter"));
 
 		ClientConfig clientConfig = new DefaultClientConfig();
 		clientConfig.getFeatures().put(
 				JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
 		Client client = Client.create(clientConfig);
 		WebResource webResource = client
-				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/update");
+				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/registration/update");
 		ClientResponse r = webResource.accept("application/json")
+				.header("SecurityKey", "i-am-foundit")
+				.header("ShortKey", "app-candidate")
 				.type("application/json").post(ClientResponse.class, userProfile);
-		if (response.getStatus() != 201) {
+		if (r.getStatus() != 204) {
 			System.out.println(r.getStatus() + " ERROR");
 		}else{
 			request.setAttribute("verify", "false");

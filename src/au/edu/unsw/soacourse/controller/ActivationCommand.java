@@ -1,9 +1,6 @@
 package au.edu.unsw.soacourse.controller;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
@@ -50,12 +47,15 @@ public class ActivationCommand implements Command {
 		WebResource webResource = client
 				.resource("http://localhost:8080/HelloWorldCxfRest/foundIT/signup");
 		ClientResponse r = webResource.accept("application/json")
+				.header("SecurityKey", "i-am-foundit")
+				.header("ShortKey", "app-candidate")
 				.type("application/json").post(ClientResponse.class, reg);
-		if (response.getStatus() != 201) {
+		if (r.getStatus() != 201) {
 			System.out.println(r.getStatus() + " ERROR");
 		}else{
 			request.setAttribute("verify", "false");
-			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp"); 
+			request.setAttribute("userID", userID);
+			RequestDispatcher rd = request.getRequestDispatcher("/regprofile.jsp"); 
 			rd.forward (request, response); 
 		}
 	}

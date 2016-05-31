@@ -1,69 +1,71 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Edit Profile</title>
-</head>
-<body>
-	<form method="post" action="control">
-		<center>
-			<input type='hidden' name='action' value='EditProfile'>
-			<table border="0" cellpadding="5">
-				<thead>
-					<tr>
-						<td colspan="2" align="center"><h3>Edit Profile</h3></td>
-					</tr>
-				</thead>
-				<tbody>
+<%@ include file="headerEmployee.jsp"%>
 
-					<tr>
-						<td><label>Date of Birth</label></td>
-						<td class="field"><input class="form-control" type="text"
-							id="dob" name="dob" value="" /></td>
-					</tr>
+<h3>Edit Profile</h3>
+<form method="post" action="control">
 
-					<tr>
-						<td><label>Current Position</label></td>
-						<td class="field"><input class="form-control" type="text"
-							id="currentPosition" name="currentPosition" value="" /></td>
-					</tr>
+	<input type='hidden' name='action' value='EditProfile'>
 
-					<tr>
-						<td><label>Current Company</label></td>
-						<td class="field"><input class="form-control" type="text"
-							id="currentCompany" name="currentCompany" value="" /></td>
-					</tr>
+	<table border="0" class="table">
+		<tbody>
 
-					<tr>
-						<td><label>Highest Education</label></td>
-						<td class="field"><input class="form-control" type="text"
-							id="highestEducation" name="highestEducation" value="" /></td>
-					</tr>
-					<tr>
-						<td><label>Past Experience</label></td>
-						<td class="field"><input class="form-control" type="text"
-							id="pastExperience" name="pastExperience" value="" /></td>
-					</tr>
-					<tr>
-						<td><label>Professional Skill</label></td>
-						<td class="field"><input class="form-control" type="text"
-							id="professionalSkills" name="professionalSkills" value="" /></td>
-					</tr>
-					<tr>
-						<td><label>Resume</label></td>
-						<td class="field"><input class="form-control" type="text"
-							id="resume" name="resume" value="" /></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td class="field"><input type="submit"
-							class="btn btn-primary" value="Edit" style='width: 100%' /></td>
-					</tr>
-				</tbody>
-			</table>
-		</center>
-	</form>
-</body>
-</html>
+			<tr>
+				<td>Date of Birth</td>
+				<td class="field"><input class="form-control" type="text"
+					id="dob" name="dob" value="<c:out value="${userProfile[3]}"/>" /></td>
+			</tr>
+
+			<tr>
+				<td>Current Position</td>
+				<td class="field"><input class="form-control" type="text"
+					id="currentPosition" name="currentPosition"
+					value="<c:out value="${userProfile[4]}"/>" /></td>
+			</tr>
+
+			<tr>
+				<td>Current Company</td>
+				<td class="field"><input class="form-control" type="text"
+					id="currentCompany" name="currentCompany"
+					value="<c:out value="${userProfile[5]}"/>" /></td>
+			</tr>
+
+			<tr>
+				<td>Highest Education</td>
+				<td class="field"><input class="form-control" type="text"
+					id="highestEducation" name="highestEducation"
+					value="<c:out value="${userProfile[6]}"/>" /></td>
+			</tr>
+			<tr>
+				<td>Past Experience</td>
+				<td class="field"><input class="form-control" type="text"
+					id="pastExperience" name="pastExperience"
+					value="<c:out value="${userProfile[7]}"/>" /></td>
+			</tr>
+			<tr>
+				<td>Professional Skill</td>
+				<td class="field"><input class="form-control" type="text"
+					id="professionalSkills" name="professionalSkills"
+					value="<c:out value="${userProfile[8]}"/>" /></td>
+			</tr>
+			<tr>
+				<td>Cover Letter</td>
+				<td class="field"><input class="form-control" type="text"
+					id="cLetter" name="cLetter"
+					value="<c:out value="${userProfile[9]}"/>" /></td>
+			</tr>
+			<tr>
+				<td>Resume</td>
+				<td class="field"><input class="form-control" type="text"
+					id="resume" name="resume"
+					value="<c:out value="${userProfile[10]}"/>" /></td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td class="field"><input type="submit" class="btn btn-primary"
+					value="Edit" class="btn btn-primary" style="width: 100px" /></td>
+			</tr>
+		</tbody>
+	</table>
+
+</form>
+<%@ include file="footerEmployee.jsp"%>
