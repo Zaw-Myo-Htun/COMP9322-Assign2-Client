@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <?xml-stylesheet type="text/xsl" href="latest.xsl" ?>
-<?xml-stylesheet type="text/css" href="/rss.css" ?>
+<?xml-stylesheet type="text/css" href="rss.css" ?>
 <rss version="2.0">
 	<channel>
 		<title></title>
@@ -11,8 +11,48 @@
 		<language>en-us</language>
 		<item>
 			<title>Job Title 1</title>
-			<description>Job Description</description>
-			<link>/url of job 1</link>
+			<description>Job Description 1</description>
+			<link>url of job 1</link>
+		</item>
+		<item>
+			<title>Job Title 2</title>
+			<description>Job Description 2</description>
+			<link>url of job 2</link>
+		</item>
+		<item>
+			<title>Job Title 3</title>
+			<description>Job Description 3</description>
+			<link>url of job 3</link>
+		</item>
+		<item>
+			<title>Job Title 4</title>
+			<description>Job Description 4</description>
+			<link>url of job 4</link>
+		</item>
+		<item>
+			<title>Job Title 5</title>
+			<description>Job Description 5</description>
+			<link>url of job 5</link>
+		</item>
+		<item>
+			<title>Job Title 6</title>
+			<description>Job Description 6</description>
+			<link>url of job 6</link>
+		</item>
+		<item>
+			<title>Job Title 7</title>
+			<description>Job Description 7</description>
+			<link>url of job 7</link>
+		</item>
+		<item>
+			<title>Job Title 8</title>
+			<description>Job Description 8</description>
+			<link>url of job 8</link>
+		</item>
+		<item>
+			<title>Job Title 9</title>
+			<description>Job Description 9</description>
+			<link>url of job 9</link>
 		</item>
 	</channel>
 </rss>
